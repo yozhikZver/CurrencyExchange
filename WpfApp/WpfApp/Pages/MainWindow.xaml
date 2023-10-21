@@ -9,8 +9,6 @@
         
         MinHeight="450" 
         MinWidth="800" 
-        MaxHeight="600"
-        MaxWidth="950"
         
         Height="450" 
         Width="800" 
@@ -22,14 +20,44 @@
 
     <Grid x:Name="MainGrid" MouseDown="MainGrid_MouseDown" Background="{StaticResource Gray}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"/>
+
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+        <Border Grid.Row="0"
+                Margin="0"
+                Background="{StaticResource DarkGray}"/>
+        <StackPanel 
+            Grid.Row="0" 
+            Orientation="Horizontal" HorizontalAlignment="Right">
             <Button 
                 x:Name="ButtonClose" Click="ButtonExit_Click" Height="25" Width="25" 
-                Content="X" FontSize="20" Background="Transparent" Foreground="{StaticResource White}"/>
+                Content="X" FontSize="20" Background="{StaticResource DarkGray}" Foreground="{StaticResource White}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                                </Border>
+                    </ControlTemplate>
+                        
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        
+                        
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource LightGray}"/>
+                            </Trigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
+        
         <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Row="1"/>
     </Grid>
 </Window>

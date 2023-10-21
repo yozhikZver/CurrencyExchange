@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xaml;
 using WpfApp.Class.DataBase;
+using WpfApp.Pages.Admin;
 using WpfApp.Pages.User;
 
 namespace WpfApp
@@ -41,7 +42,7 @@ namespace WpfApp
                     {
                         case "a":
                             MainWindow.Instance.MainFrame.Content = new AdminPage();
-                            break;
+                            return;
                         case "u":
                             MainWindow.Instance.MainFrame.Content = new UserPage();
                             break;

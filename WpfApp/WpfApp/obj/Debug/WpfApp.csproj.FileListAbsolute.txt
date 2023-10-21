@@ -46,3 +46,5 @@ C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\ob
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CoreCompileInputs.cache
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.exe
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.pdb
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\UsersControl.g.cs
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\UsersControl.baml

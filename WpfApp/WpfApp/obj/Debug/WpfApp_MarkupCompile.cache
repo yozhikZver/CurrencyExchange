@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\App.xaml
-6927763684
+71895788818
 
-9-1098171114
+10-1780217896
 13-1310406943
-Pages\Admin\AdminPage.xaml;Pages\MainWindow.xaml;Pages\PageSingIn.xaml;Pages\User\UserPage.xaml;Style\Style.xaml;Style\StyleColors.xaml;
+Pages\Admin\AdminPage.xaml;Pages\Admin\UsersControl.xaml;Pages\MainWindow.xaml;Pages\PageSingIn.xaml;Pages\User\UserPage.xaml;Style\Style.xaml;Style\StyleColors.xaml;
 
 False
 

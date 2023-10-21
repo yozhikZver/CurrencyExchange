@@ -11,31 +11,77 @@
         <ResourceDictionary Source="../../Style/Style.xaml"/>
     </Page.Resources>
     <Grid x:Name="xGrid">
-        <Grid
-            MouseEnter="StackPanel_MouseEnter"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Orientation="Horizontal">
+            <StackPanel
+                
             HorizontalAlignment="Left"
               x:Name="MenuGrid"
-              Width="50" MouseLeave="MenuGrid_MouseLeave">
-            <StackPanel 
-            HorizontalAlignment="Center" Margin="0">
+                MouseLeave="MenuGrid_MouseLeave"
+                Background="Transparent"
+              Width="0" >
                 <StackPanel 
+            HorizontalAlignment="Center" Margin="0"
+                    >
+                    <StackPanel 
                 Orientation="Horizontal">
-                    <TextBox Style="{StaticResource TextBoxMenu}" IsEnabled="False" >Пользователи</TextBox>
-                </StackPanel>
-                <StackPanel 
+                        <Button Click="ButtonUsers_Click" Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
+                    <StackPanel 
                 Orientation="Horizontal">
-                    <TextBox Style="{StaticResource TextBoxMenu}" IsEnabled="False" >Пользователи</TextBox>
-                </StackPanel>
-                <StackPanel 
+                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
+                    <StackPanel 
                 Orientation="Horizontal">
-                    <TextBox Style="{StaticResource TextBoxMenu}" IsEnabled="False" >Пользователи</TextBox>
+                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
+                    <StackPanel 
+                Orientation="Horizontal">
+                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
+                    <StackPanel 
+                Orientation="Horizontal">
+                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
+                    <StackPanel 
+                Orientation="Horizontal">
+                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
+
                 </StackPanel>
             </StackPanel>
-        </Grid>
-            
 
-        <Frame x:Name="AdminFrame" Grid.Column="1"  
+            <Border 
+                x:Name="LeftBorder"
+                Background="Transparent" 
+                MouseEnter="StackPanel_MouseEnter" MouseLeave="MenuGrid_MouseLeave" 
+                VerticalAlignment="Stretch"
+                Margin="0" Width="15" 
+                BorderBrush="{StaticResource LightGray}"
+                    BorderThickness="0.5"
+                CornerRadius="5">
+                <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                       Padding="0,0,0,7"
+                       FontSize="10"
+                       Foreground="{StaticResource LightGray}"
+                       Content="..."/>
+
+
+            </Border>
+
+        </StackPanel>
+
+        <Frame Grid.Column="1" x:Name="AdminFrame" Margin="0" HorizontalAlignment="Stretch"
                NavigationUIVisibility="Hidden"/>
+
+
 
     </Grid>
 </Page>
