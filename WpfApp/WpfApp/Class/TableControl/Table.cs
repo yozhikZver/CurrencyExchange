@@ -13,6 +13,7 @@ namespace WpfApp.Class.TableControl
     {
         public string NameTable;
         public List<string> ColumnsName;
+        public List<string> ColumnsNameReal;
         public List<Row> rows;
         public Table(string nameTable, List<string> deletColumn)
         {
@@ -23,6 +24,7 @@ namespace WpfApp.Class.TableControl
            COLUMN_NAME AS [Имя столбца]
    FROM INFORMATION_SCHEMA.COLUMNS
    WHERE table_name='"+ NameTable +"'");
+            ColumnsNameReal = new List<string>(ColumnsName);
             foreach (var delItem in deletColumn)
                 ColumnsName.Remove(delItem);
 

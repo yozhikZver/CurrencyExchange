@@ -14,6 +14,8 @@ namespace WpfApp.Class.TableControl
 {
     internal class TablesControl
     {
+        private string textBoxLastText ="";
+        private bool IsEnableSendSQL =  false;
         private StackPanel mainPanel;
         private Table table;
         public TablesControl(StackPanel _mainPanel) {
@@ -53,6 +55,8 @@ namespace WpfApp.Class.TableControl
             if (textBox != null)
             {
                 textBox.IsReadOnly = false;
+                textBoxLastText = textBox.Text;
+                IsEnableSendSQL = true;
             }
         }
 
@@ -88,7 +92,7 @@ namespace WpfApp.Class.TableControl
                         {
                             if ((TextBox)table.rows[i].columns[j] == textBox)
                             {
-                                SendSQLData(i, j, textBox.Text);
+                                SendSQLData(i, j, textBox);
                                 return;
                             }
                         }
@@ -112,7 +116,7 @@ namespace WpfApp.Class.TableControl
                     {
                         if ((TextBox)table.rows[i].columns[j] == textBox)
                         {
-                            SendSQLData(i, j, textBox.Text);
+                            SendSQLData(i, j, textBox);
                             return;
                         }
                     }
@@ -178,11 +182,15 @@ namespace WpfApp.Class.TableControl
 
         }
 
-        private void SendSQLData(int idRow, int idColumn, string str)
+        private void SendSQLData(int idRow, int idColumn, TextBox textbox)
         {
-            Database.SQLSet("UPDATE " +table.NameTable +" SET " + table.ColumnsName[idColumn] + " = " + str + " WHERE " + table.ColumnsName[idColumn+1] + "=" + table.rows[idRow].columns[idColumn+1].Text);
+            if (IsEnableSendSQL)
+            {
+                IsEnableSendSQL = false;
+                if (Database.SQLSet("UPDATE " + table.NameTable + " SET " + table.ColumnsName[idColumn] + " = '" + textbox.Text + "' WHERE " + table.ColumnsNameReal[0] + "=" + idRow) == null) textbox.Text = textBoxLastText;
 
-             //   MessageBox.Show("Столбец:" + table.ColumnsName[idColumn] + " Строка:" + idRow.ToString());
+            }
+            //   MessageBox.Show("Столбец:" + table.ColumnsName[idColumn] + " Строка:" + idRow.ToString());
 
         }
     }

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 using System.Xml;
 
@@ -78,6 +79,8 @@ namespace WpfApp.Class.DataBase
 
         public static List<string> SQLSet(string str)
         {
+            try
+            {
             SqlConnection connection = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=CurrencyExchange;Integrated Security=True");
 
             SqlCommand command = new SqlCommand(str, connection);
@@ -88,15 +91,28 @@ namespace WpfApp.Class.DataBase
             List<string> list = new List<string>();
 
 
-
-            do
+            
+                do
+                {
+                    list.Add(reader[0].ToString().Trim());
+                } while (reader.Read());
+                reader.Close();
+                connection.Close();
+                return list;
+            }
+            catch(SqlException e)
             {
-                list.Add(reader[0].ToString().Trim());
-            } while (reader.Read());
+                MessageBox.Show(e.Message);
+                return null;
 
-            reader.Close();
-            connection.Close();
-            return list;
+            }
+            catch (Exception)
+            {
+                return new List<string>();
+            }
+
+
+
 
         }
 
