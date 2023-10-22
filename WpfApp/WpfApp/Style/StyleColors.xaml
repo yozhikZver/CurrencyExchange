@@ -4,8 +4,9 @@
     <SolidColorBrush x:Key="White">#D0D0D0</SolidColorBrush>
     <SolidColorBrush x:Key="Light">#838383</SolidColorBrush>
     <SolidColorBrush x:Key="LightGray">#4D4D4F</SolidColorBrush>
+    <SolidColorBrush x:Key="GrayOt">#383838</SolidColorBrush>
     <SolidColorBrush x:Key="Gray">#1E1E1E</SolidColorBrush>
     <SolidColorBrush x:Key="DarkGray">#1A191C</SolidColorBrush>
-    <SolidColorBrush x:Key="Dark">#101212</SolidColorBrush>
+    <SolidColorBrush x:Key="Violent">#1B101F</SolidColorBrush>
 
 </ResourceDictionary>   

@@ -7,9 +7,30 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UsersControl">
-    
-    <Grid>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Users" FontSize="30"/>
-
+    <Page.Resources>
+        <ResourceDictionary Source="../../Style/Style.xaml"/>
+    </Page.Resources>
+    <Grid >
+        <!--Таблица-->
+        <StackPanel x:Name="mainPanel"
+            Orientation="Vertical">
+            <!--Титульник таблицы-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Style="{StaticResource TitlTable}" Content="Имя" FontSize="20"/>
+                <Label Grid.Column="1" Style="{StaticResource TitlTable}" Content="Фамилия" FontSize="20"/>
+                <Label Grid.Column="2" Style="{StaticResource TitlTable}" Content="Вальюта" FontSize="20"/>
+                <Label Grid.Column="3" Style="{StaticResource TitlTable}" Content="Логин" FontSize="20"/>
+                <Label Grid.Column="4" Style="{StaticResource TitlTable}" Content="Пароль" FontSize="20"/>
+            </Grid>
+            <!--Тестовая строка-->
+            
+        </StackPanel>
     </Grid>
 </Page>
