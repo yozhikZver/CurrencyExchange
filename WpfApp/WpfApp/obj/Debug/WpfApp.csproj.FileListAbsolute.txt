@@ -48,3 +48,9 @@ C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\ob
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.pdb
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\UsersControl.g.cs
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\UsersControl.baml
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp_Content.g.cs
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bin\Debug\EntityFramework.dll
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bin\Debug\EntityFramework.xml
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CopyComplete

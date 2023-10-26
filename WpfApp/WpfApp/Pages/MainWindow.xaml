@@ -19,6 +19,7 @@
 
 
     <Grid x:Name="MainGrid" MouseDown="MainGrid_MouseDown" Background="{StaticResource Gray}">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
 
@@ -30,6 +31,35 @@
         <StackPanel 
             Grid.Row="0" 
             Orientation="Horizontal" HorizontalAlignment="Right">
+            
+            <Button 
+                x:Name="ButtonFullScr" Click="ButtonExit_Click" Height="25" Width="25" Margin="10,0"
+                Content="□" FontSize="20" Background="{StaticResource DarkGray}" Foreground="{StaticResource White}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+
+
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource LightGray}"/>
+                            </Trigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+            
             <Button 
                 x:Name="ButtonClose" Click="ButtonExit_Click" Height="25" Width="25" 
                 Content="X" FontSize="20" Background="{StaticResource DarkGray}" Foreground="{StaticResource White}">
@@ -55,9 +85,9 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                
             </Button>
         </StackPanel>
-        
         <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Row="1"/>
     </Grid>
 </Window>

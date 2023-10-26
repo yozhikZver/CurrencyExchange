@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,29 +12,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp.Class;
 using WpfApp.Class.DataBase;
-using WpfApp.Class.TableControl;
 
 namespace WpfApp.Pages.Admin
 {
-    
     /// <summary>
     /// Логика взаимодействия для UsersControl.xaml
     /// </summary>
     public partial class UsersControl : Page
     {
-        public static UsersControl Instance { get; set; }
         public UsersControl()
         {
             InitializeComponent();
-            Instance = this;
-            TablesControl tabControl = new TablesControl(mainPanel);
-            tabControl.AddRows();
-            
+            dataGrid.ItemsSource = Connect.c.Employees.ToList();
         }
-       
-    }    
 
-       
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RmoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FindBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }

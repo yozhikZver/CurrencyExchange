@@ -77,7 +77,7 @@
             </Border>
 
         </StackPanel>
-
+        
         <Frame Grid.Column="1" x:Name="AdminFrame" Margin="0" HorizontalAlignment="Stretch"
                NavigationUIVisibility="Hidden"/>
 

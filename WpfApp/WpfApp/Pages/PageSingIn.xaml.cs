@@ -33,17 +33,17 @@ namespace WpfApp
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            var listL =  Database.GetLogins();
-            foreach (var (Login, Password, Role) in listL)
-                if (TextBoxLogin.Text == Login && TextBoxLoginPassword.Password == Password)
+            var listL =  Connect.context.Employees.ToList();
+            foreach (var item in listL)
+                if (TextBoxLogin.Text == item.Login.Trim() && TextBoxLoginPassword.Password == item.Password.Trim())
                 {
                     LabeWarning.Content = "";
-                    switch (Role)
+                    switch (item.Role.Trim())
                     {
-                        case "a":
+                        case "admin":
                             MainWindow.Instance.MainFrame.Content = new AdminPage();
                             return;
-                        case "u":
+                        case "user":
                             MainWindow.Instance.MainFrame.Content = new UserPage();
                             break;
                         default:

@@ -25,9 +25,9 @@ namespace WpfApp
         {
             InitializeComponent();
             Instance = this;
-            MainFrame.Content = new AdminPage();
+            MainFrame.Content = new PageSingIn();
         }
-
+         
 
         private void MainGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {

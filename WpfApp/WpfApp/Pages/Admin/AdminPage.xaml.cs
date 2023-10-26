@@ -30,79 +30,79 @@ namespace WpfApp
             UserControl = new UsersControl();
         }
 
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (!isMenuPanelOpen && MenuGrid.Width == 0)
+            private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
             {
-                ShowSlidePanel();
-                isMenuPanelOpen=true;
+                if (!isMenuPanelOpen && MenuGrid.Width == 0)
+                {
+                    ShowSlidePanel();
+                    isMenuPanelOpen=true;
+                }
             }
-        }
-        private void MenuGrid_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (isMenuPanelOpen && MenuGrid.Width==250)
+            private void MenuGrid_MouseLeave(object sender, MouseEventArgs e)
             {
-                HideSlidePanel();
-                isMenuPanelOpen = false;
+                if (isMenuPanelOpen && MenuGrid.Width==250)
+                {
+                    HideSlidePanel();
+                    isMenuPanelOpen = false;
+                }
             }
-        }
-        private void ShowSlidePanel()
-        {
-            DoubleAnimation animation = new DoubleAnimation();
-            animation.From = 0;
-            animation.To = 250; // задайте необходимую ширину для выдвигаемой панели
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.2)); // задайте необходимую продолжительность анимации
+            private void ShowSlidePanel()
+            {
+                DoubleAnimation animation = new DoubleAnimation();
+                animation.From = 0;
+                animation.To = 250; // задайте необходимую ширину для выдвигаемой панели
+                animation.Duration = new Duration(TimeSpan.FromSeconds(0.2)); // задайте необходимую продолжительность анимации
 
-            Storyboard.SetTargetName(animation, MenuGrid.Name);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Grid.WidthProperty));
+                Storyboard.SetTargetName(animation, MenuGrid.Name);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(Grid.WidthProperty));
 
-            Storyboard storyboard = new Storyboard();
-            storyboard.Children.Add(animation);
+                Storyboard storyboard = new Storyboard();
+                storyboard.Children.Add(animation);
 
-            storyboard.Begin(this);
+                storyboard.Begin(this);
 
-            animation = new DoubleAnimation();
-            animation.From = 15;
-            animation.To = 0; // задайте необходимую ширину для выдвигаемой панели
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.1)); // задайте необходимую продолжительность анимации
+                animation = new DoubleAnimation();
+                animation.From = 15;
+                animation.To = 0; // задайте необходимую ширину для выдвигаемой панели
+                animation.Duration = new Duration(TimeSpan.FromSeconds(0.1)); // задайте необходимую продолжительность анимации
 
-            Storyboard.SetTargetName(animation, LeftBorder.Name);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Border.WidthProperty));
+                Storyboard.SetTargetName(animation, LeftBorder.Name);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(Border.WidthProperty));
 
-            storyboard = new Storyboard();
-            storyboard.Children.Add(animation);
+                storyboard = new Storyboard();
+                storyboard.Children.Add(animation);
 
-            storyboard.Begin(this);
+                storyboard.Begin(this);
 
-        }
-        private void HideSlidePanel()
-        {
-            DoubleAnimation animation = new DoubleAnimation();
-            animation.From = 250;
-            animation.To = 0; // задайте необходимую ширину для выдвигаемой панели
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.2)); // задайте необходимую продолжительность анимации
+            }
+            private void HideSlidePanel()
+            {
+                DoubleAnimation animation = new DoubleAnimation();
+                animation.From = 250;
+                animation.To = 0; // задайте необходимую ширину для выдвигаемой панели
+                animation.Duration = new Duration(TimeSpan.FromSeconds(0.2)); // задайте необходимую продолжительность анимации
 
-            Storyboard.SetTargetName(animation, MenuGrid.Name);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Grid.WidthProperty));
+                Storyboard.SetTargetName(animation, MenuGrid.Name);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(Grid.WidthProperty));
 
-            Storyboard storyboard = new Storyboard();
-            storyboard.Children.Add(animation);
+                Storyboard storyboard = new Storyboard();
+                storyboard.Children.Add(animation);
 
-            storyboard.Begin(this);
+                storyboard.Begin(this);
 
-            animation = new DoubleAnimation();
-            animation.From = 0;
-            animation.To = 15; // задайте необходимую ширину для выдвигаемой панели
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.1)); // задайте необходимую продолжительность анимации
+                animation = new DoubleAnimation();
+                animation.From = 0;
+                animation.To = 15; // задайте необходимую ширину для выдвигаемой панели
+                animation.Duration = new Duration(TimeSpan.FromSeconds(0.1)); // задайте необходимую продолжительность анимации
 
-            Storyboard.SetTargetName(animation, LeftBorder.Name);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Border.WidthProperty));
+                Storyboard.SetTargetName(animation, LeftBorder.Name);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(Border.WidthProperty));
 
-            storyboard = new Storyboard();
-            storyboard.Children.Add(animation);
+                storyboard = new Storyboard();
+                storyboard.Children.Add(animation);
 
-            storyboard.Begin(this);
-        }
+                storyboard.Begin(this);
+            }
 
 
         private void ButtonUsers_Click(object sender, RoutedEventArgs e)

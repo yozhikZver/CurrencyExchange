@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CurrencyExchangeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="IdEmployee" />
+    </Key>
+    <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+    <Property Name="NameEmployee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="FamilyEmployee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="CurrencyEmployee" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TypesCurrencies" Relationship="Self.FK_Employees_TypesCurrencies" FromRole="Employees" ToRole="TypesCurrencies" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TypesCurrencies">
+    <Key>
+      <PropertyRef Name="IDCurrencie" />
+    </Key>
+    <Property Name="IDCurrencie" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NameCurrencie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_TypesCurrencies" FromRole="TypesCurrencies" ToRole="Employees" />
+  </EntityType>
+  <Association Name="FK_Employees_TypesCurrencies">
+    <End Role="TypesCurrencies" Type="Self.TypesCurrencies" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypesCurrencies">
+        <PropertyRef Name="IDCurrencie" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="CurrencyEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CurrencyExchangeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TypesCurrencies" EntityType="Self.TypesCurrencies" />
+    <AssociationSet Name="FK_Employees_TypesCurrencies" Association="Self.FK_Employees_TypesCurrencies">
+      <End Role="TypesCurrencies" EntitySet="TypesCurrencies" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
