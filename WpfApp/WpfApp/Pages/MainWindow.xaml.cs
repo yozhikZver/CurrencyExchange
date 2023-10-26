@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Pages.Admin;
 
 namespace WpfApp
 {
@@ -25,7 +26,8 @@ namespace WpfApp
         {
             InitializeComponent();
             Instance = this;
-            MainFrame.Content = new PageSingIn();
+            var page = new PageSingIn();
+            MainFrame.Content = page;
         }
          
 

@@ -10,8 +10,8 @@
     <Page.Resources>
         <ResourceDictionary >
             <ResourceDictionary.MergedDictionaries>
-             <ResourceDictionary Source="../../Style/Style.xaml"/>
-            <ResourceDictionary Source="../../Style/StyleColors.xaml"/>
+                <ResourceDictionary Source="../../Style/Style.xaml"/>
+                <ResourceDictionary Source="../../Style/StyleColors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -19,11 +19,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <DataGrid 
+        <DataGrid VerticalAlignment="Stretch"
             x:Name="dataGrid" AutoGenerateColumns="False" 
-            FontSize="20" HorizontalContentAlignment="Center" >           
+            FontSize="20"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=IdEmployee}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Path=NameEmployee}" />
@@ -34,6 +34,47 @@
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Grid x:Name="GridAdd" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Border Grid.ColumnSpan="10" Grid.RowSpan="10" Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray}" BorderThickness="1" CornerRadius="7"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Имя</Label>
+            <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Фамилия</Label>
+            <Label Grid.Row="3" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Роль</Label>
+            <Label Grid.Row="3" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Валюта</Label>
+            <Label Grid.Row="5" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Логин</Label>
+            <Label Grid.Row="5" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Пароль</Label>
+
+            <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding NameEmployee}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FamilyEmployee}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="4" Grid.Column="0" Text="{Binding Role}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrencyEmployee}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="6" Grid.Column="0" Text="{Binding Login}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Password}"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            
+            <Button Grid.Row="8" Grid.Column="0" Click="Cancel_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Отмена"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="AddInTable_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Добавить"/>
+
+        </Grid>
+       
+
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
