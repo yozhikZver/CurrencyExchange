@@ -38,9 +38,13 @@ namespace WpfApp.Pages.Admin
                 textBox_Name.Text = "";
                 textBox_SurName.Text = "";
                 textBox_Role.Text = "";
-                textBox_Currency.Text = "";
                 textBox_Login.Text = "";
                 textBox_Password.Text = "";
+            textBox_Currency.Items.Clear();
+            foreach (var item in Connect.context.TypesCurrencies)
+            {
+                textBox_Currency.Items.Add(item.NameCurrencie.Trim());
+            }
                 isAdd = true;
             if (GridFind.Width != 0)
                 HideSlidePanel(GridFind);
@@ -81,10 +85,15 @@ namespace WpfApp.Pages.Admin
                 MessageBox.Show("Выделите одну строчку для редактирования!");
                 return;
             }
+            textBox_Currency.Items.Clear();
+            foreach (var item in Connect.context.TypesCurrencies)
+            {
+                textBox_Currency.Items.Add(item.NameCurrencie.Trim());
+            }
+            textBox_Currency.SelectedItem = Row[0].CurrencyEmployee;
             textBox_Name.Text = Row[0].NameEmployee.ToString().Trim();
             textBox_SurName.Text = Row[0].FamilyEmployee.ToString().Trim();
             textBox_Role.Text = Row[0].Role.ToString().Trim();
-            textBox_Currency.Text = Row[0].CurrencyEmployee.ToString().Trim();
             textBox_Login.Text = Row[0].Login.ToString().Trim();
             textBox_Password.Text = Row[0].Password.ToString().Trim();
             Button_Сonfirm.Content = "Изменить";
@@ -172,14 +181,22 @@ namespace WpfApp.Pages.Admin
             }
             if (isAdd)
             {
-                
+                string strCurrency = "";
+                foreach (var item in Connect.context.TypesCurrencies)
+                {
+                    if (item.NameCurrencie.Trim() == textBox_Currency.Text)
+                    {
+                        strCurrency = item.IDCurrencie.Trim();
+                        break;
+                    }
+                }
                 Employees employees = new Employees()
                 {
                     IdEmployee = indedx,
                     NameEmployee = textBox_Name.Text,
                     FamilyEmployee = textBox_SurName.Text,
                     Role = textBox_Role.Text,
-                    CurrencyEmployee = textBox_Currency.Text,
+                    CurrencyEmployee = strCurrency,
                     Login = textBox_Login.Text,
                     Password = textBox_Password.Text
                 };
@@ -187,7 +204,7 @@ namespace WpfApp.Pages.Admin
                 textBox_Name.Text = "";
                 textBox_SurName.Text = "";
                 textBox_Role.Text = "";
-                textBox_Currency.Text = "";
+                textBox_Currency.SelectedItem = null;
                 textBox_Login.Text = "";
                 textBox_Password.Text = "";
                 try
@@ -222,13 +239,22 @@ namespace WpfApp.Pages.Admin
                 {
                     MessageBox.Show(ex.Message);
                 }
+                string strCurrency = "";
+                foreach (var item in Connect.context.TypesCurrencies)
+                {
+                    if (item.NameCurrencie.Trim() == textBox_Currency.Text)
+                    {
+                        strCurrency = item.IDCurrencie.Trim();
+                        break;
+                    }
+                }
                 Employees employees = new Employees()
                 {
                     IdEmployee = indedx,
                     NameEmployee = textBox_Name.Text,
                     FamilyEmployee = textBox_SurName.Text,
                     Role = textBox_Role.Text,
-                    CurrencyEmployee = textBox_Currency.Text,
+                    CurrencyEmployee = strCurrency,
                     Login = textBox_Login.Text,
                     Password = textBox_Password.Text
                 };
@@ -236,7 +262,7 @@ namespace WpfApp.Pages.Admin
                 textBox_Name.Text = "";
                 textBox_SurName.Text = "";
                 textBox_Role.Text = "";
-                textBox_Currency.Text = "";
+                textBox_Currency.SelectedItem = null;
                 textBox_Login.Text = "";
                 textBox_Password.Text = "";
                 try

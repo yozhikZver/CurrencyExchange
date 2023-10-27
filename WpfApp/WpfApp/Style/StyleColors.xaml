@@ -5,7 +5,8 @@
     <SolidColorBrush x:Key="Light">#838383</SolidColorBrush>
     <SolidColorBrush x:Key="LightGray">#4D4D4F</SolidColorBrush>
     <SolidColorBrush x:Key="GrayOt">#383838</SolidColorBrush>
-    <SolidColorBrush x:Key="Gray">#1E1E1E</SolidColorBrush>
+    <SolidColorBrush x:Key="Gray">#FF1E1E1E</SolidColorBrush>
+    <Color x:Key="GrayC">#FF1E1E1E</Color>
     <SolidColorBrush x:Key="DarkGray">#1A191C</SolidColorBrush>
     <SolidColorBrush x:Key="Violent">#1B101F</SolidColorBrush>
 

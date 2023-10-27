@@ -38,7 +38,7 @@
         </DataGrid>
 
         <Grid x:Name="GridAdd" HorizontalAlignment="Left"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+              VerticalAlignment="Bottom" Height="400" Width="500" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -67,7 +67,12 @@
             <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBox_Name"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
             <TextBox Grid.Row="2" Grid.Column="1" x:Name="textBox_SurName"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
             <TextBox Grid.Row="4" Grid.Column="0" x:Name="textBox_Role"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textBox_Currency"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+
+            <ComboBox Grid.Row="4" Grid.Column="1" x:Name="textBox_Currency"  Style="{StaticResource ComboBoxTest2}" Margin="10,10" >
+
+            </ComboBox>
+            <!--<TextBox Grid.Row="4" Grid.Column="1" x:Name="textBox_Currency"  Style="{StaticResource TextBoxDef}" Margin="10,10" />-->
+            
             <TextBox Grid.Row="6" Grid.Column="0" x:Name="textBox_Login"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
             <TextBox Grid.Row="6" Grid.Column="1" x:Name="textBox_Password"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
             
