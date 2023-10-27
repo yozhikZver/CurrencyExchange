@@ -22,20 +22,23 @@
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <DataGrid VerticalAlignment="Stretch"
+                  CanUserAddRows="False"
             x:Name="dataGrid" AutoGenerateColumns="False" 
+                  IsReadOnly="True"
             FontSize="20"  >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=IdEmployee}"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Path=NameEmployee}" />
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=FamilyEmployee}" />
-                <DataGridTextColumn Header="Роль" Binding="{Binding Path=Role}" />
-                <DataGridTextColumn Header="Валюта" Binding="{Binding Path=CurrencyEmployee}" />
-                <DataGridTextColumn Header="Логин" Binding="{Binding Path=Login}"/>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding IdEmployee}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding NameEmployee}" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding FamilyEmployee}" />
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role}" />
+                <DataGridTextColumn Header="Валюта" Binding="{Binding CurrencyEmployee}" />
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid x:Name="GridAdd" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+        <Grid x:Name="GridAdd" HorizontalAlignment="Left"
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -61,20 +64,55 @@
             <Label Grid.Row="5" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Логин</Label>
             <Label Grid.Row="5" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Пароль</Label>
 
-            <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding NameEmployee}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FamilyEmployee}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="4" Grid.Column="0" Text="{Binding Role}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CurrencyEmployee}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="6" Grid.Column="0" Text="{Binding Login}" Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Password}"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBox_Name"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="textBox_SurName"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="4" Grid.Column="0" x:Name="textBox_Role"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="textBox_Currency"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="6" Grid.Column="0" x:Name="textBox_Login"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="6" Grid.Column="1" x:Name="textBox_Password"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
             
             <Button Grid.Row="8" Grid.Column="0" Click="Cancel_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Отмена"/>
-            <Button Grid.Row="8" Grid.Column="1" Click="AddInTable_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Добавить"/>
+            <Button Grid.Row="8" Grid.Column="1" x:Name="Button_Сonfirm" Click="Button_Сonfirm_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Добавить"/>
 
         </Grid>
-       
+        <Grid x:Name="GridFind" HorizontalAlignment="Right"
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
+            <Border Grid.ColumnSpan="10" Grid.RowSpan="10" Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray}" BorderThickness="1" CornerRadius="7"/>
 
+            <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Имя</Label>
+            <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Фамилия</Label>
+            <Label Grid.Row="3" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Роль</Label>
+            <Label Grid.Row="3" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Валюта</Label>
+            <Label Grid.Row="5" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Логин</Label>
+            <Label Grid.Row="5" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Пароль</Label>
+
+            <TextBox Grid.Row="2" Grid.Column="0" TextChanged="textBox_TextChanged" x:Name="textBox_NameF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="1" TextChanged="textBox_TextChanged" x:Name="textBox_SurNameF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="4" Grid.Column="0" TextChanged="textBox_TextChanged" x:Name="textBox_RoleF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="4" Grid.Column="1" TextChanged="textBox_TextChanged" x:Name="textBox_CurrencyF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="6" Grid.Column="0" TextChanged="textBox_TextChanged" x:Name="textBox_LoginF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="6" Grid.Column="1" TextChanged="textBox_TextChanged" x:Name="textBox_PasswordF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+
+            <Button Grid.Row="8" Grid.Column="0" Click="Cancel_ClickFind" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Отмена"/>
+            <Button Grid.Row="8" Grid.Column="1" Click="Button_СonfirmFind_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Сброс"/>
+
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
