@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data.Entity.Validation;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +15,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp.Class.DataBase;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WpfApp.Pages.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для UsersControl.xaml
+    /// Логика взаимодействия для CurrencyControl.xaml
     /// </summary>
-    public partial class UsersControl : Page
+    public partial class CurrencyControl : Page
     {
-        public UsersControl()
+        public CurrencyControl()
         {
             InitializeComponent();
             Update();
@@ -35,38 +32,37 @@ namespace WpfApp.Pages.Admin
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-                textBox_Name.Text = "";
-                textBox_SurName.Text = "";
-                textBox_Role.Text = "";
-                textBox_Login.Text = "";
-                textBox_Password.Text = "";
-            textBox_Currency.Items.Clear();
-            foreach (var item in Connect.context.TypesCurrencies)
-            {
-                textBox_Currency.Items.Add(item.NameCurrencie.Trim());
-            }
-                isAdd = true;
+            textBox_Name.Text = "";
+            textBox_ID.Text = "";
+            textBox_Count.Text = "";
+            isAdd = true;
             if (GridFind.Width != 0)
                 HideSlidePanel(GridFind);
             if (GridAdd.Width == 0 || GridAdd.HorizontalAlignment == HorizontalAlignment.Center)
-                {
-                    ShowSlidePanel(GridAdd);
-                }
-                else
-                {
-                    HideSlidePanel(GridAdd);
-                }
-                Button_Сonfirm.Content = "Добавить";
+            {
+                ShowSlidePanel(GridAdd);
+            }
+            else
+            {
+                HideSlidePanel(GridAdd);
+            }
+            Button_Сonfirm.Content = "Добавить";
             GridAdd.HorizontalAlignment = HorizontalAlignment.Left;
 
 
         }
-        private void Update() { dataGrid.ItemsSource = Connect.context.Employees.ToList(); }
+        private void Update() { dataGrid.ItemsSource = Connect.context.TypesCurrencies.ToList(); }
         private void RmoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var rows = dataGrid.SelectedItems.Cast<Employees>().ToList();
+            var rows = dataGrid.SelectedItems.Cast<TypesCurrencies>().ToList();
+            foreach (var item in rows)
+            if(Connect.context.Employees.Any(x => x.CurrencyEmployee == item.IDCurrencie))
+                {
+                    MessageBox.Show("Данные используются в таблце \"Пользователи\"");
+                    return;
+                }
             if (MessageBox.Show($"Удалить {rows.Count} строк из таблицы?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) == MessageBoxResult.Yes)
-                Connect.context.Employees.RemoveRange(rows);
+                Connect.context.TypesCurrencies.RemoveRange(rows);
             try
             {
                 Connect.context.SaveChanges();
@@ -79,25 +75,17 @@ namespace WpfApp.Pages.Admin
         }
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            var Row = dataGrid.SelectedItems.Cast<Employees>().ToList();
-            if (Row.Count != 1 )
+            var Row = dataGrid.SelectedItems.Cast<TypesCurrencies>().ToList();
+            if (Row.Count != 1)
             {
                 MessageBox.Show("Выделите одну строчку для редактирования!");
                 return;
             }
-            textBox_Currency.Items.Clear();
-            foreach (var item in Connect.context.TypesCurrencies)
-            {
-                textBox_Currency.Items.Add(item.NameCurrencie.Trim());
-            }
-            textBox_Currency.SelectedItem = Row[0].CurrencyEmployee;
-            textBox_Name.Text = Row[0].NameEmployee.ToString().Trim();
-            textBox_SurName.Text = Row[0].FamilyEmployee.ToString().Trim();
-            textBox_Role.Text = Row[0].Role.ToString().Trim();
-            textBox_Login.Text = Row[0].Login.ToString().Trim();
-            textBox_Password.Text = Row[0].Password.ToString().Trim();
+            textBox_Name.Text = Row[0].NameCurrencie.ToString().Trim();
+            textBox_ID.Text = Row[0].IDCurrencie.ToString().Trim();
+            textBox_Count.Text = Row[0].Count.ToString().Trim();
             Button_Сonfirm.Content = "Изменить";
-            
+
             isAdd = false;
             if (GridFind.Width != 0)
                 HideSlidePanel(GridFind);
@@ -118,26 +106,21 @@ namespace WpfApp.Pages.Admin
         }
         private void FindFilter()
         {
-            List<Employees> list = new List<Employees>();
-            foreach (var item in Connect.context.Employees)
+            List<TypesCurrencies> list = new List<TypesCurrencies>();
+            foreach (var item in Connect.context.TypesCurrencies)
             {
 
                 if (
                     (
                     textBox_NameF.Text == "" &&
-                    textBox_SurNameF.Text == "" &&
-                    textBox_RoleF.Text == "" &&
-                    textBox_CurrencyF.Text == "" &&
-                    textBox_LoginF.Text == "" &&
-                    textBox_PasswordF.Text == "")
+                    textBox_IDF.Text == "" &&
+                    textBox_CountF.Text == "")
                     ||
                     (
-                    (item.NameEmployee.StartsWith(textBox_NameF.Text) && textBox_NameF.Text != "") ||
-                    (item.FamilyEmployee.StartsWith(textBox_SurNameF.Text) && textBox_SurNameF.Text != "") ||
-                    (item.Role.StartsWith(textBox_RoleF.Text) && textBox_RoleF.Text != "") ||
-                    (item.CurrencyEmployee.StartsWith(textBox_CurrencyF.Text) && textBox_CurrencyF.Text != "") ||
-                    (item.Login.StartsWith(textBox_LoginF.Text) && textBox_LoginF.Text != "") ||
-                    (item.Password.StartsWith(textBox_PasswordF.Text) && textBox_PasswordF.Text != "")))
+                    (item.NameCurrencie.StartsWith(textBox_NameF.Text) && textBox_NameF.Text != "") ||
+                    (item.IDCurrencie.StartsWith(textBox_IDF.Text) && textBox_IDF.Text != "") ||
+                    (item.Count==int.Parse(textBox_CountF.Text) && textBox_CountF.Text != "") 
+                    ))
                 {
                     list.Add(item);
                 }
@@ -152,7 +135,7 @@ namespace WpfApp.Pages.Admin
         private void FindBtn_Click(object sender, RoutedEventArgs e)
         {
             if (GridAdd.Width != 0)
-            HideSlidePanel(GridAdd);
+                HideSlidePanel(GridAdd);
             if (GridFind.Width == 0)
             {
                 if (GridFind.Width == 0)
@@ -166,47 +149,20 @@ namespace WpfApp.Pages.Admin
         private void Cancel_Click(object sender, RoutedEventArgs e) { HideSlidePanel(GridAdd); }
         private void Button_Сonfirm_Click(object sender, RoutedEventArgs e)
         {
-            int indedx = 0;
-            foreach (var item in Connect.context.Employees)
-            {
-
-                if (item.IdEmployee == indedx)
-                {
-                    indedx++;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            
             if (isAdd)
             {
-                string strCurrency = "";
-                foreach (var item in Connect.context.TypesCurrencies)
+               
+                TypesCurrencies typesCurrencies = new TypesCurrencies()
                 {
-                    if (item.NameCurrencie.Trim() == textBox_Currency.Text)
-                    {
-                        strCurrency = item.IDCurrencie.Trim();
-                        break;
-                    }
-                }
-                Employees employees = new Employees()
-                {
-                    IdEmployee = indedx,
-                    NameEmployee = textBox_Name.Text,
-                    FamilyEmployee = textBox_SurName.Text,
-                    Role = textBox_Role.Text,
-                    CurrencyEmployee = strCurrency,
-                    Login = textBox_Login.Text,
-                    Password = textBox_Password.Text
+                    IDCurrencie = textBox_ID.Text,
+                    NameCurrencie = textBox_Name.Text,
+                    Count = int.Parse(textBox_Count.Text)
                 };
-                Connect.context.Employees.Add(employees);
+                Connect.context.TypesCurrencies.Add(typesCurrencies);
                 textBox_Name.Text = "";
-                textBox_SurName.Text = "";
-                textBox_Role.Text = "";
-                textBox_Currency.SelectedItem = null;
-                textBox_Login.Text = "";
-                textBox_Password.Text = "";
+                textBox_ID.Text = "";
+                textBox_Count.Text = "";
                 try
                 {
                     Connect.context.SaveChanges();
@@ -229,8 +185,13 @@ namespace WpfApp.Pages.Admin
             }
             else
             {
-                var rows = dataGrid.SelectedItems.Cast<Employees>().ToList();
-                    Connect.context.Employees.RemoveRange(rows);
+                var rows = dataGrid.SelectedItems.Cast<TypesCurrencies>().ToList();
+                foreach (var item in rows)
+                    if (Connect.context.Employees.Any(x => x.CurrencyEmployee == item.IDCurrencie))
+                    {
+                        MessageBox.Show("Данные используются в таблце \"Пользователи\"");
+                        return;
+                    }
                 try
                 {
                     Connect.context.SaveChanges();
@@ -239,32 +200,18 @@ namespace WpfApp.Pages.Admin
                 {
                     MessageBox.Show(ex.Message);
                 }
-                string strCurrency = "";
-                foreach (var item in Connect.context.TypesCurrencies)
+                Update();
+
+                TypesCurrencies employees = new TypesCurrencies()
                 {
-                    if (item.NameCurrencie.Trim() == textBox_Currency.Text)
-                    {
-                        strCurrency = item.IDCurrencie.Trim();
-                        break;
-                    }
-                }
-                Employees employees = new Employees()
-                {
-                    IdEmployee = indedx,
-                    NameEmployee = textBox_Name.Text,
-                    FamilyEmployee = textBox_SurName.Text,
-                    Role = textBox_Role.Text,
-                    CurrencyEmployee = strCurrency,
-                    Login = textBox_Login.Text,
-                    Password = textBox_Password.Text
+                    IDCurrencie = textBox_ID.Text,
+                    NameCurrencie = textBox_Name.Text,
+                    Count = int.Parse(textBox_Count.Text)
                 };
-                Connect.context.Employees.Add(employees);
+                Connect.context.TypesCurrencies.Add(employees);
                 textBox_Name.Text = "";
-                textBox_SurName.Text = "";
-                textBox_Role.Text = "";
-                textBox_Currency.SelectedItem = null;
-                textBox_Login.Text = "";
-                textBox_Password.Text = "";
+                textBox_ID.Text = "";
+                textBox_Count.Text = "";
                 try
                 {
                     Connect.context.SaveChanges();
@@ -352,6 +299,10 @@ namespace WpfApp.Pages.Admin
         {
             FindFilter();
         }
+
+        private void textBox_Count_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
-

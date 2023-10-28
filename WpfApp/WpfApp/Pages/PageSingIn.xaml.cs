@@ -26,6 +26,7 @@ namespace WpfApp
     /// </summary>
     public partial class PageSingIn : Page
     {
+        public static PageSingIn Instance { get; private set; }
         public PageSingIn()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace WpfApp
                     switch (item.Role.Trim())
                     {
                         case "admin":
-                            MainWindow.Instance.MainFrame.Content = new AdminPage();
+                            MainWindow.Instance.MainFrame.Content = new AdminPage(item.NameEmployee.Trim(),item.FamilyEmployee.Trim());
                             return;
                         case "user":
                             MainWindow.Instance.MainFrame.Content = new UserPage();
