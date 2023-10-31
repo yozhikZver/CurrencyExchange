@@ -54,5 +54,3 @@ C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bi
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bin\Debug\EntityFramework.xml
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CopyComplete
-C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\CurrencyControl.g.cs
-C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\CurrencyControl.baml

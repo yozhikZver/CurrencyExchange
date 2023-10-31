@@ -62,11 +62,15 @@ namespace WpfApp.Pages.Admin
 
 
         }
+<<<<<<< HEAD
         private void Update() 
         {
             Connect.c = null;
             dataGrid.ItemsSource = Connect.context.Employees.ToList();
         }
+=======
+        private void Update() { dataGrid.ItemsSource = Connect.c.Employees.ToList(); }
+>>>>>>> parent of df50773 (Вторя таблица)
         private void RmoveBtn_Click(object sender, RoutedEventArgs e)
         {
             var rows = dataGrid.SelectedItems.Cast<Employees>().ToList();

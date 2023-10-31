@@ -18,30 +18,22 @@
 
         <StackPanel
             Orientation="Horizontal">
-            <Grid
+            <StackPanel
                 
             HorizontalAlignment="Left"
               x:Name="MenuGrid"
                 MouseLeave="MenuGrid_MouseLeave"
                 Background="Transparent"
               Width="0" >
-                
                 <StackPanel 
-            HorizontalAlignment="Center" Margin="0">
-                    <Label 
-                        x:Name="LabelNameSurName"  Style="{StaticResource LabelDef}" 
-                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                        Margin="5"/>
+            HorizontalAlignment="Center" Margin="0"
+                    >
                     <StackPanel 
                 Orientation="Horizontal">
                         <Button Click="ButtonUsers_Click" Style="{StaticResource TextBoxMenu}">Пользователи</Button>
                     </StackPanel>
                     <StackPanel 
                 Orientation="Horizontal">
-                        <Button Click="ButtonCurrency_Click" Style="{StaticResource TextBoxMenu}">Валюты</Button>
-                    </StackPanel>
-                    <StackPanel 
-                Orientation="Horizontal">
                         <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
                     </StackPanel>
                     <StackPanel 
@@ -56,14 +48,13 @@
                 Orientation="Horizontal">
                         <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
                     </StackPanel>
-                </StackPanel>
+                    <StackPanel 
+                Orientation="Horizontal">
+                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                    </StackPanel>
 
-                <StackPanel 
-                Orientation="Horizontal" VerticalAlignment="Bottom">
-                    <Button Margin="0,0,0,5" Click="Logout_Click" Style="{StaticResource ButtonExit}" >Выход</Button>
                 </StackPanel>
-
-            </Grid>
+            </StackPanel>
 
             <Border 
                 x:Name="LeftBorder"

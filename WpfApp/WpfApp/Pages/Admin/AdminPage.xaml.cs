@@ -23,18 +23,14 @@ namespace WpfApp
     public partial class AdminPage : Page
     {
         public UsersControl UserControl;
-        public CurrencyControl CurrencyControl;
         private bool isMenuPanelOpen = false;
-        public AdminPage(string Name, string SurName)
+        public AdminPage()
         {
             InitializeComponent();
-            LabelNameSurName.Content = SurName + " " + Name;
             UserControl = new UsersControl();
-            CurrencyControl = new CurrencyControl();
-            AdminFrame.Navigate(UserControl);
         }
 
-        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+            private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
             {
                 if (!isMenuPanelOpen && MenuGrid.Width == 0)
                 {
@@ -108,17 +104,10 @@ namespace WpfApp
                 storyboard.Begin(this);
             }
 
-        private void ButtonCurrency_Click(object sender, RoutedEventArgs e)
-        {
-            AdminFrame.Navigate(CurrencyControl);
-        }
+
         private void ButtonUsers_Click(object sender, RoutedEventArgs e)
         {
             AdminFrame.Navigate(UserControl);
-        }
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Instance.MainFrame.Navigate(MainWindow.Instance.pageSingIn) ;
         }
     }
 }

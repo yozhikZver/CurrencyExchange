@@ -23,13 +23,12 @@ namespace WpfApp
     public partial class MainWindow : Window
     {
         public static MainWindow Instance { get; private set; }
-           
-        public PageSingIn pageSingIn = new PageSingIn();
         public MainWindow()
         {
             InitializeComponent();
             Instance = this;
-            MainFrame.Content = pageSingIn;
+            var page = new PageSingIn();
+            MainFrame.Content = page;
         }
          
 
@@ -38,8 +37,7 @@ namespace WpfApp
                 if (e.ChangedButton == MouseButton.Left)
                     this.DragMove();
             
-        } 
-        
+        }
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
             Close();

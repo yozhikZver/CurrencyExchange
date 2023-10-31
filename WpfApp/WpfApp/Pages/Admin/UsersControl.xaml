@@ -38,7 +38,7 @@
         </DataGrid>
 
         <Grid x:Name="GridAdd" HorizontalAlignment="Left"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+              VerticalAlignment="Bottom" Height="400" Width="500" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
