@@ -20,9 +20,9 @@ namespace WpfApp.Class.DataBase
             this.Employees = new HashSet<Employees>();
         }
     
-        public string IDCurrencie { get; set; }
+        public int ID { get; set; }
         public string NameCurrencie { get; set; }
-        public Nullable<int> Count { get; set; }
+        public int Count { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees { get; set; }

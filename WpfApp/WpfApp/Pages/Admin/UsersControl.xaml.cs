@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
@@ -61,10 +62,15 @@ namespace WpfApp.Pages.Admin
 
 
         }
-        private void Update() { dataGrid.ItemsSource = Connect.context.Employees.ToList(); }
+        private void Update() 
+        {
+            Connect.c = null;
+            dataGrid.ItemsSource = Connect.context.Employees.ToList();
+        }
         private void RmoveBtn_Click(object sender, RoutedEventArgs e)
         {
             var rows = dataGrid.SelectedItems.Cast<Employees>().ToList();
+
             if (MessageBox.Show($"Удалить {rows.Count} строк из таблицы?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) == MessageBoxResult.Yes)
                 Connect.context.Employees.RemoveRange(rows);
             try
@@ -79,7 +85,7 @@ namespace WpfApp.Pages.Admin
         }
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            var Row = dataGrid.SelectedItems.Cast<Employees>().ToList();
+            var Row = dataGrid.SelectedItems;
             if (Row.Count != 1 )
             {
                 MessageBox.Show("Выделите одну строчку для редактирования!");
@@ -90,12 +96,13 @@ namespace WpfApp.Pages.Admin
             {
                 textBox_Currency.Items.Add(item.NameCurrencie.Trim());
             }
-            textBox_Currency.SelectedItem = Row[0].CurrencyEmployee;
-            textBox_Name.Text = Row[0].NameEmployee.ToString().Trim();
-            textBox_SurName.Text = Row[0].FamilyEmployee.ToString().Trim();
-            textBox_Role.Text = Row[0].Role.ToString().Trim();
-            textBox_Login.Text = Row[0].Login.ToString().Trim();
-            textBox_Password.Text = Row[0].Password.ToString().Trim();
+
+            textBox_Currency.SelectedItem = Connect.context.TypesCurrencies.ToList()[(int)Connect.context.Employees.ToList()[dataGrid.SelectedIndex].Currencie].NameCurrencie.ToString().Trim();
+            textBox_Name.Text = Connect.context.Employees.ToList()[dataGrid.SelectedIndex].NameEmployee.ToString().Trim();
+            textBox_SurName.Text = Connect.context.Employees.ToList()[dataGrid.SelectedIndex].FamilyEmployee.ToString().Trim();
+            textBox_Role.Text = Connect.context.Employees.ToList()[dataGrid.SelectedIndex].Role.ToString().Trim();
+            textBox_Login.Text = Connect.context.Employees.ToList()[dataGrid.SelectedIndex].Login.ToString().Trim();
+            textBox_Password.Text = Connect.context.Employees.ToList()[dataGrid.SelectedIndex].Password.ToString().Trim();
             Button_Сonfirm.Content = "Изменить";
             
             isAdd = false;
@@ -135,7 +142,7 @@ namespace WpfApp.Pages.Admin
                     (item.NameEmployee.StartsWith(textBox_NameF.Text) && textBox_NameF.Text != "") ||
                     (item.FamilyEmployee.StartsWith(textBox_SurNameF.Text) && textBox_SurNameF.Text != "") ||
                     (item.Role.StartsWith(textBox_RoleF.Text) && textBox_RoleF.Text != "") ||
-                    (item.CurrencyEmployee.StartsWith(textBox_CurrencyF.Text) && textBox_CurrencyF.Text != "") ||
+                    (item.Currencie == int.Parse(textBox_CurrencyF.Text) && textBox_CurrencyF.Text != "") ||
                     (item.Login.StartsWith(textBox_LoginF.Text) && textBox_LoginF.Text != "") ||
                     (item.Password.StartsWith(textBox_PasswordF.Text) && textBox_PasswordF.Text != "")))
                 {
@@ -170,7 +177,7 @@ namespace WpfApp.Pages.Admin
             foreach (var item in Connect.context.Employees)
             {
 
-                if (item.IdEmployee == indedx)
+                if (item.ID == indedx)
                 {
                     indedx++;
                 }
@@ -181,22 +188,22 @@ namespace WpfApp.Pages.Admin
             }
             if (isAdd)
             {
-                string strCurrency = "";
+                int IDCurrency = 0;
                 foreach (var item in Connect.context.TypesCurrencies)
                 {
                     if (item.NameCurrencie.Trim() == textBox_Currency.Text)
                     {
-                        strCurrency = item.IDCurrencie.Trim();
+                        IDCurrency = item.ID;
                         break;
                     }
                 }
                 Employees employees = new Employees()
                 {
-                    IdEmployee = indedx,
+                    ID = indedx,
                     NameEmployee = textBox_Name.Text,
                     FamilyEmployee = textBox_SurName.Text,
                     Role = textBox_Role.Text,
-                    CurrencyEmployee = strCurrency,
+                    Currencie = IDCurrency,
                     Login = textBox_Login.Text,
                     Password = textBox_Password.Text
                 };
@@ -229,61 +236,18 @@ namespace WpfApp.Pages.Admin
             }
             else
             {
-                var rows = dataGrid.SelectedItems.Cast<Employees>().ToList();
-                    Connect.context.Employees.RemoveRange(rows);
-                try
-                {
-                    Connect.context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                string strCurrency = "";
-                foreach (var item in Connect.context.TypesCurrencies)
-                {
-                    if (item.NameCurrencie.Trim() == textBox_Currency.Text)
-                    {
-                        strCurrency = item.IDCurrencie.Trim();
-                        break;
-                    }
-                }
-                Employees employees = new Employees()
-                {
-                    IdEmployee = indedx,
-                    NameEmployee = textBox_Name.Text,
-                    FamilyEmployee = textBox_SurName.Text,
-                    Role = textBox_Role.Text,
-                    CurrencyEmployee = strCurrency,
-                    Login = textBox_Login.Text,
-                    Password = textBox_Password.Text
-                };
-                Connect.context.Employees.Add(employees);
+                Connect.SQLUpdate("Employees", "NameEmployee", textBox_Name.Text, dataGrid.SelectedIndex);
+                Connect.SQLUpdate("Employees", "FamilyEmployee", textBox_SurName.Text, dataGrid.SelectedIndex);
+                Connect.SQLUpdate("Employees", "Currencie", textBox_Currency.SelectedIndex.ToString(), dataGrid.SelectedIndex);
+                Connect.SQLUpdate("Employees", "Role", textBox_Role.Text, dataGrid.SelectedIndex);
+                Connect.SQLUpdate("Employees", "Login", textBox_Login.Text, dataGrid.SelectedIndex);
+                Connect.SQLUpdate("Employees", "Password", textBox_Password.Text, dataGrid.SelectedIndex);
                 textBox_Name.Text = "";
                 textBox_SurName.Text = "";
                 textBox_Role.Text = "";
                 textBox_Currency.SelectedItem = null;
                 textBox_Login.Text = "";
                 textBox_Password.Text = "";
-                try
-                {
-                    Connect.context.SaveChanges();
-
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            MessageBox.Show($"Свойство: {validationError.PropertyName} Ошибка: {validationError.ErrorMessage}");
-                        }
-                    }
-                }
-                catch (Exception dbEx)
-                {
-                    MessageBox.Show(dbEx.Message);
-                }
             }
             HideSlidePanel(GridAdd);
             Update();

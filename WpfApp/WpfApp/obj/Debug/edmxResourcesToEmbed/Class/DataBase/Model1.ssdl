@@ -2,14 +2,14 @@
 <Schema Namespace="Хранилище CurrencyExchangeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Employees">
     <Key>
-      <PropertyRef Name="IdEmployee" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="IdEmployee" Type="int" Nullable="false" />
-    <Property Name="NameEmployee" Type="nchar" MaxLength="10" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NameEmployee" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="FamilyEmployee" Type="nchar" MaxLength="10" />
-    <Property Name="Role" Type="nchar" MaxLength="1" />
-    <Property Name="CurrencyEmployee" Type="nchar" MaxLength="3" />
-    <Property Name="Login" Type="nchar" MaxLength="25" Nullable="false" />
+    <Property Name="Currencie" Type="int" />
+    <Property Name="Role" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="25" />
     <Property Name="Password" Type="nchar" MaxLength="25" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -24,21 +24,21 @@
   </EntityType>
   <EntityType Name="TypesCurrencies">
     <Key>
-      <PropertyRef Name="IDCurrencie" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="IDCurrencie" Type="nchar" MaxLength="3" Nullable="false" />
-    <Property Name="NameCurrencie" Type="nchar" MaxLength="10" />
-    <Property Name="Count" Type="int" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NameCurrencie" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Employees_TypesCurrencies">
     <End Role="TypesCurrencies" Type="Self.TypesCurrencies" Multiplicity="0..1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypesCurrencies">
-        <PropertyRef Name="IDCurrencie" />
+        <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Employees">
-        <PropertyRef Name="CurrencyEmployee" />
+        <PropertyRef Name="Currencie" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

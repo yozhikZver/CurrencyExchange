@@ -105,6 +105,7 @@
     <Compile Include="Class\DataBase\Employees.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Class\DataBase\EmployeesType.cs" />
     <Compile Include="Class\DataBase\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

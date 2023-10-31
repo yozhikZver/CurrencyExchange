@@ -28,7 +28,7 @@
                   IsReadOnly="True"
             FontSize="20"  >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding IDCurrencie}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
                 <DataGridTextColumn Header="Валюта" Binding="{Binding NameCurrencie}" />
                 <DataGridTextColumn Header="В наличии" Binding="{Binding Count}" />
             </DataGrid.Columns>
@@ -53,14 +53,12 @@
             </Grid.RowDefinitions>
 
             <Border Grid.ColumnSpan="10" Grid.RowSpan="10" Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray}" BorderThickness="1" CornerRadius="7"/>
+            
+            <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Название валюты</Label>
+            <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Количество в наличии</Label>
 
-            <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Обозначение валюты</Label>
-            <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Название валюты</Label>
-            <Label Grid.Row="3" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Количество в наличии</Label>
-
-            <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBox_ID"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="textBox_Name"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="4" Grid.Column="0" KeyDown="textBox_Count_KeyDown" x:Name="textBox_Count"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBox_Name"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="1" KeyDown="textBox_Count_KeyDown" x:Name="textBox_Count"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
 
 
             <Button Grid.Row="8" Grid.Column="0" Click="Cancel_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Отмена"/>
@@ -87,13 +85,11 @@
 
             <Border Grid.ColumnSpan="10" Grid.RowSpan="10" Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray}" BorderThickness="1" CornerRadius="7"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Обозначение валюты</Label>
-            <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Название валюты</Label>
-            <Label Grid.Row="3" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Количество в наличии</Label>
+            <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Название валюты</Label>
+            <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Количество в наличии</Label>
 
-            <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBox_IDF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="textBox_NameF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            <TextBox Grid.Row="4" Grid.Column="0" KeyDown="textBox_Count_KeyDown" x:Name="textBox_CountF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="0" x:Name="textBox_NameF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
+            <TextBox Grid.Row="2" Grid.Column="1" KeyDown="textBox_Count_KeyDown" x:Name="textBox_CountF"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
 
             <Button Grid.Row="8" Grid.Column="0" Click="Cancel_ClickFind" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Отмена"/>
             <Button Grid.Row="8" Grid.Column="1" Click="Button_СonfirmFind_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Сброс"/>

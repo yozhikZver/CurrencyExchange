@@ -4,11 +4,11 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="CurrencyExchangeModel.Employees">
         <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NameEmployee" ColumnName="NameEmployee" />
           <ScalarProperty Name="FamilyEmployee" ColumnName="FamilyEmployee" />
+          <ScalarProperty Name="Currencie" ColumnName="Currencie" />
           <ScalarProperty Name="Role" ColumnName="Role" />
-          <ScalarProperty Name="CurrencyEmployee" ColumnName="CurrencyEmployee" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
@@ -28,7 +28,7 @@
     <EntitySetMapping Name="TypesCurrencies">
       <EntityTypeMapping TypeName="CurrencyExchangeModel.TypesCurrencies">
         <MappingFragment StoreEntitySet="TypesCurrencies">
-          <ScalarProperty Name="IDCurrencie" ColumnName="IDCurrencie" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NameCurrencie" ColumnName="NameCurrencie" />
           <ScalarProperty Name="Count" ColumnName="Count" />
         </MappingFragment>
