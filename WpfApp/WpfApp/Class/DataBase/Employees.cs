@@ -14,11 +14,11 @@ namespace WpfApp.Class.DataBase
     
     public partial class Employees
     {
-        public int IdEmployee { get; set; }
+        public int ID { get; set; }
         public string NameEmployee { get; set; }
         public string FamilyEmployee { get; set; }
+        public Nullable<int> Currencie { get; set; }
         public string Role { get; set; }
-        public string CurrencyEmployee { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
     

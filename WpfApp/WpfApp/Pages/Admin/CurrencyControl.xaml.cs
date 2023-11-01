@@ -33,7 +33,6 @@ namespace WpfApp.Pages.Admin
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             textBox_Name.Text = "";
-            textBox_ID.Text = "";
             textBox_Count.Text = "";
             isAdd = true;
             if (GridFind.Width != 0)
@@ -51,12 +50,12 @@ namespace WpfApp.Pages.Admin
 
 
         }
-        private void Update() { dataGrid.ItemsSource = Connect.context.TypesCurrencies.ToList(); }
+        private void Update() { Console.WriteLine("Обновление таблицы валюта"); Connect.c = null; dataGrid.ItemsSource = Connect.context.TypesCurrencies.ToList(); }
         private void RmoveBtn_Click(object sender, RoutedEventArgs e)
         {
             var rows = dataGrid.SelectedItems.Cast<TypesCurrencies>().ToList();
             foreach (var item in rows)
-            if(Connect.context.Employees.Any(x => x.CurrencyEmployee == item.IDCurrencie))
+                if (Connect.context.Employees.Any(x => x.Currencie == item.ID))
                 {
                     MessageBox.Show("Данные используются в таблце \"Пользователи\"");
                     return;
@@ -82,7 +81,6 @@ namespace WpfApp.Pages.Admin
                 return;
             }
             textBox_Name.Text = Row[0].NameCurrencie.ToString().Trim();
-            textBox_ID.Text = Row[0].IDCurrencie.ToString().Trim();
             textBox_Count.Text = Row[0].Count.ToString().Trim();
             Button_Сonfirm.Content = "Изменить";
 
@@ -113,12 +111,10 @@ namespace WpfApp.Pages.Admin
                 if (
                     (
                     textBox_NameF.Text == "" &&
-                    textBox_IDF.Text == "" &&
                     textBox_CountF.Text == "")
                     ||
                     (
                     (item.NameCurrencie.StartsWith(textBox_NameF.Text) && textBox_NameF.Text != "") ||
-                    (item.IDCurrencie.StartsWith(textBox_IDF.Text) && textBox_IDF.Text != "") ||
                     (item.Count==int.Parse(textBox_CountF.Text) && textBox_CountF.Text != "") 
                     ))
                 {
@@ -147,91 +143,73 @@ namespace WpfApp.Pages.Admin
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e) { HideSlidePanel(GridAdd); }
+        private int SelectDatdGridId()
+        {
+            TypesCurrencies empl = (TypesCurrencies)dataGrid.SelectedItem;
+            return empl.ID; ;
+        }
+
+        private int GetLastIdEmpl()
+        {
+            int index = 0;
+            foreach (var item in Connect.context.TypesCurrencies)
+                if (item.ID == index)
+                    index++;
+                else
+                    return index;
+            return index;
+        }
+
+        private void ClearTextBox()
+        {
+            textBox_Name.Text = "";
+            textBox_Count.Text = "";
+        }
+        private void AddRow()
+        {
+            TypesCurrencies typesCurrencies = new TypesCurrencies()
+            {
+                ID = GetLastIdEmpl(),
+                NameCurrencie = textBox_Name.Text,
+                Count = int.Parse(textBox_Count.Text),
+            };
+
+            Connect.context.TypesCurrencies.Add(typesCurrencies);
+
+            ClearTextBox();
+
+            try
+            {
+                Connect.context.SaveChanges();
+
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        MessageBox.Show($"Свойство: {validationError.PropertyName} Ошибка: {validationError.ErrorMessage}");
+                    }
+                }
+            }
+            catch (Exception dbEx)
+            {
+                MessageBox.Show(dbEx.Message);
+            }
+
+        }
+        private void EditRow()
+        {
+            Connect.SQLUpdate("TypesCurrencies", "NameCurrencie", textBox_Name.Text, SelectDatdGridId());
+            Connect.SQLUpdate("TypesCurrencies", "Count", textBox_Count.Text, SelectDatdGridId());
+        }
         private void Button_Сonfirm_Click(object sender, RoutedEventArgs e)
         {
-            
             if (isAdd)
-            {
-               
-                TypesCurrencies typesCurrencies = new TypesCurrencies()
-                {
-                    IDCurrencie = textBox_ID.Text,
-                    NameCurrencie = textBox_Name.Text,
-                    Count = int.Parse(textBox_Count.Text)
-                };
-                Connect.context.TypesCurrencies.Add(typesCurrencies);
-                textBox_Name.Text = "";
-                textBox_ID.Text = "";
-                textBox_Count.Text = "";
-                try
-                {
-                    Connect.context.SaveChanges();
-
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            MessageBox.Show($"Свойство: {validationError.PropertyName} Ошибка: {validationError.ErrorMessage}");
-                        }
-                    }
-                }
-                catch (Exception dbEx)
-                {
-                    MessageBox.Show(dbEx.Message);
-                }
-            }
+                AddRow();
             else
-            {
-                var rows = dataGrid.SelectedItems.Cast<TypesCurrencies>().ToList();
-                foreach (var item in rows)
-                    if (Connect.context.Employees.Any(x => x.CurrencyEmployee == item.IDCurrencie))
-                    {
-                        MessageBox.Show("Данные используются в таблце \"Пользователи\"");
-                        return;
-                    }
-                try
-                {
-                    Connect.context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                Update();
-
-                TypesCurrencies employees = new TypesCurrencies()
-                {
-                    IDCurrencie = textBox_ID.Text,
-                    NameCurrencie = textBox_Name.Text,
-                    Count = int.Parse(textBox_Count.Text)
-                };
-                Connect.context.TypesCurrencies.Add(employees);
-                textBox_Name.Text = "";
-                textBox_ID.Text = "";
-                textBox_Count.Text = "";
-                try
-                {
-                    Connect.context.SaveChanges();
-
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            MessageBox.Show($"Свойство: {validationError.PropertyName} Ошибка: {validationError.ErrorMessage}");
-                        }
-                    }
-                }
-                catch (Exception dbEx)
-                {
-                    MessageBox.Show(dbEx.Message);
-                }
-            }
+                EditRow();
             HideSlidePanel(GridAdd);
             Update();
 
@@ -303,6 +281,11 @@ namespace WpfApp.Pages.Admin
         private void textBox_Count_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Update();
         }
     }
 }

@@ -2,14 +2,14 @@
 <Schema Namespace="CurrencyExchangeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Employees">
     <Key>
-      <PropertyRef Name="IdEmployee" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="IdEmployee" Type="Int32" Nullable="false" />
-    <Property Name="NameEmployee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NameEmployee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="FamilyEmployee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="Role" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
-    <Property Name="CurrencyEmployee" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
-    <Property Name="Login" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Currencie" Type="Int32" />
+    <Property Name="Role" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="TypesCurrencies" Relationship="Self.FK_Employees_TypesCurrencies" FromRole="Employees" ToRole="TypesCurrencies" />
   </EntityType>
@@ -25,11 +25,11 @@
   </EntityType>
   <EntityType Name="TypesCurrencies">
     <Key>
-      <PropertyRef Name="IDCurrencie" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="IDCurrencie" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="NameCurrencie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NameCurrencie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_TypesCurrencies" FromRole="TypesCurrencies" ToRole="Employees" />
   </EntityType>
   <Association Name="FK_Employees_TypesCurrencies">
@@ -37,10 +37,10 @@
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypesCurrencies">
-        <PropertyRef Name="IDCurrencie" />
+        <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Employees">
-        <PropertyRef Name="CurrencyEmployee" />
+        <PropertyRef Name="Currencie" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
