@@ -29,7 +29,7 @@ namespace WpfApp.Class.DataBase
 
             try
             {
-                string sqlExpression = $"UPDATE {nameTable} SET {cellEdit}='{dataEdit}' WHERE ID={ID}";
+                string sqlExpression = $"UPDATE {nameTable} SET {cellEdit}='{dataEdit.Replace(',', '.')}' WHERE ID={ID}";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

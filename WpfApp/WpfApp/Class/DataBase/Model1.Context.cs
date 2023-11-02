@@ -25,7 +25,9 @@ namespace WpfApp.Class.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CurseCurrencie> CurseCurrencie { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Exchanges> Exchanges { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypesCurrencies> TypesCurrencies { get; set; }
     }

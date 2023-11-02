@@ -42,19 +42,7 @@
                     </StackPanel>
                     <StackPanel 
                 Orientation="Horizontal">
-                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
-                    </StackPanel>
-                    <StackPanel 
-                Orientation="Horizontal">
-                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
-                    </StackPanel>
-                    <StackPanel 
-                Orientation="Horizontal">
-                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
-                    </StackPanel>
-                    <StackPanel 
-                Orientation="Horizontal">
-                        <Button Style="{StaticResource TextBoxMenu}">Пользователи</Button>
+                        <Button Click="ButtonCuurse_Click" Style="{StaticResource TextBoxMenu}">Курсы</Button>
                     </StackPanel>
                 </StackPanel>
 

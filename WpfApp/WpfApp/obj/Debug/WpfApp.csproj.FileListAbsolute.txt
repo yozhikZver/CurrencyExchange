@@ -56,3 +56,7 @@ C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\bi
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CopyComplete
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\CurrencyControl.g.cs
 C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\CurrencyControl.baml
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\User\MainUserPage.g.cs
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\User\MainUserPage.baml
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\CourseControl.g.cs
+C:\Users\FvK\Documents\БТПИТ\WPF\Практика\Practika\WpfApp\WpfApp\obj\Debug\Pages\Admin\CourseControl.baml

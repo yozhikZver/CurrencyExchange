@@ -4,11 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="809d0472791547d28612ad7ab18bd9fe" Name="Diagram1">
-        <EntityTypeShape EntityType="CurrencyExchangeModel.Employees" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CurrencyExchangeModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CurrencyExchangeModel.TypesCurrencies" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="e10977a9467f419c8e0aaebad526bb1e" Name="Diagram1">
+        <EntityTypeShape EntityType="CurrencyExchangeModel.CurseCurrencie" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurrencyExchangeModel.Employees" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurrencyExchangeModel.Exchanges" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurrencyExchangeModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CurrencyExchangeModel.TypesCurrencies" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="CurrencyExchangeModel.FK_CurseCurrencie_TypesCurrencies1" ManuallyRouted="false" />
         <AssociationConnector Association="CurrencyExchangeModel.FK_Employees_TypesCurrencies" ManuallyRouted="false" />
+        <AssociationConnector Association="CurrencyExchangeModel.FK_Exchanges_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CurrencyExchangeModel.FK_Exchanges_TypesCurrencies" ManuallyRouted="false" />
+        <AssociationConnector Association="CurrencyExchangeModel.FK_Exchanges_TypesCurrencies1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

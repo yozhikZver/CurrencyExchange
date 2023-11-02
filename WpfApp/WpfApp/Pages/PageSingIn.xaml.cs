@@ -45,8 +45,8 @@ namespace WpfApp
                             MainWindow.Instance.MainFrame.Content = new AdminPage(item.NameEmployee.Trim(),item.FamilyEmployee.Trim());
                             return;
                         case "user":
-                            MainWindow.Instance.MainFrame.Content = new UserPage();
-                            break;
+                            MainWindow.Instance.MainFrame.Content = new UserPage(item.NameEmployee.Trim(), item.FamilyEmployee.Trim());
+                            return;
                         default:
                             break;
                     }

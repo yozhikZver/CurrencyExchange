@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\CourseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Admin\CurrencyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,7 +106,13 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Class\DataBase\Connect.cs" />
+    <Compile Include="Class\DataBase\CurseCurrencie.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class\DataBase\Employees.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class\DataBase\Exchanges.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Class\DataBase\Model1.Context.cs">
@@ -133,6 +143,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Pages\Admin\CourseControl.xaml.cs">
+      <DependentUpon>CourseControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Admin\CurrencyControl.xaml.cs">
       <DependentUpon>CurrencyControl.xaml</DependentUpon>
     </Compile>
@@ -144,6 +157,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\PageSingIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\User\MainUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,6 +180,9 @@
   <ItemGroup>
     <Compile Include="Pages\PageSingIn.xaml.cs">
       <DependentUpon>PageSingIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\MainUserPage.xaml.cs">
+      <DependentUpon>MainUserPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\User\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>

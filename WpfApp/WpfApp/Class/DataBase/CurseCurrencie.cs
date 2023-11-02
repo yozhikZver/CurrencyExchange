@@ -12,17 +12,11 @@ namespace WpfApp.Class.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class CurseCurrencie
     {
         public int ID { get; set; }
-        public string NameEmployee { get; set; }
-        public string FamilyEmployee { get; set; }
-        public Nullable<int> ID_Currencie { get; set; }
-        public string Role { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public decimal CourseUSD { get; set; }
     
         public virtual TypesCurrencies TypesCurrencies { get; set; }
-        public virtual Exchanges Exchanges { get; set; }
     }
 }

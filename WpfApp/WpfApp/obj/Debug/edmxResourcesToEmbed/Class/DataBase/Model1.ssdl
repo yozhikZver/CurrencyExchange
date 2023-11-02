@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Хранилище CurrencyExchangeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CurseCurrencie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="CourseUSD" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="Employees">
     <Key>
       <PropertyRef Name="ID" />
@@ -7,10 +14,21 @@
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="NameEmployee" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="FamilyEmployee" Type="nchar" MaxLength="10" />
-    <Property Name="Currencie" Type="int" />
+    <Property Name="ID_Currencie" Type="int" />
     <Property Name="Role" Type="nchar" MaxLength="5" Nullable="false" />
     <Property Name="Login" Type="nchar" MaxLength="25" />
     <Property Name="Password" Type="nchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Exchanges">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID_Employee" Type="int" Nullable="false" />
+    <Property Name="ID_GCurrencie" Type="int" Nullable="false" />
+    <Property Name="ID_SCurrencie" Type="int" Nullable="false" />
+    <Property Name="Course" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -30,6 +48,18 @@
     <Property Name="NameCurrencie" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Count" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_CurseCurrencie_TypesCurrencies1">
+    <End Role="TypesCurrencies" Type="Self.TypesCurrencies" Multiplicity="1" />
+    <End Role="CurseCurrencie" Type="Self.CurseCurrencie" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TypesCurrencies">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CurseCurrencie">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Employees_TypesCurrencies">
     <End Role="TypesCurrencies" Type="Self.TypesCurrencies" Multiplicity="0..1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -38,17 +68,71 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Employees">
-        <PropertyRef Name="Currencie" />
+        <PropertyRef Name="ID_Currencie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exchanges_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+    <End Role="Exchanges" Type="Self.Exchanges" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Exchanges">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exchanges_TypesCurrencies">
+    <End Role="TypesCurrencies" Type="Self.TypesCurrencies" Multiplicity="1" />
+    <End Role="Exchanges" Type="Self.Exchanges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypesCurrencies">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Exchanges">
+        <PropertyRef Name="ID_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exchanges_TypesCurrencies1">
+    <End Role="TypesCurrencies" Type="Self.TypesCurrencies" Multiplicity="1" />
+    <End Role="Exchanges" Type="Self.Exchanges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypesCurrencies">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Exchanges">
+        <PropertyRef Name="ID_GCurrencie" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="Хранилище CurrencyExchangeModelContainer">
+    <EntitySet Name="CurseCurrencie" EntityType="Self.CurseCurrencie" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exchanges" EntityType="Self.Exchanges" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TypesCurrencies" EntityType="Self.TypesCurrencies" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CurseCurrencie_TypesCurrencies1" Association="Self.FK_CurseCurrencie_TypesCurrencies1">
+      <End Role="TypesCurrencies" EntitySet="TypesCurrencies" />
+      <End Role="CurseCurrencie" EntitySet="CurseCurrencie" />
+    </AssociationSet>
     <AssociationSet Name="FK_Employees_TypesCurrencies" Association="Self.FK_Employees_TypesCurrencies">
       <End Role="TypesCurrencies" EntitySet="TypesCurrencies" />
       <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exchanges_Employees" Association="Self.FK_Exchanges_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Exchanges" EntitySet="Exchanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exchanges_TypesCurrencies" Association="Self.FK_Exchanges_TypesCurrencies">
+      <End Role="TypesCurrencies" EntitySet="TypesCurrencies" />
+      <End Role="Exchanges" EntitySet="Exchanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exchanges_TypesCurrencies1" Association="Self.FK_Exchanges_TypesCurrencies1">
+      <End Role="TypesCurrencies" EntitySet="TypesCurrencies" />
+      <End Role="Exchanges" EntitySet="Exchanges" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

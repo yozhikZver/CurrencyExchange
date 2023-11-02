@@ -1,16 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище CurrencyExchangeModelContainer" CdmEntityContainer="CurrencyExchangeEntities1">
+    <EntitySetMapping Name="CurseCurrencie">
+      <EntityTypeMapping TypeName="CurrencyExchangeModel.CurseCurrencie">
+        <MappingFragment StoreEntitySet="CurseCurrencie">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CourseUSD" ColumnName="CourseUSD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="CurrencyExchangeModel.Employees">
         <MappingFragment StoreEntitySet="Employees">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="NameEmployee" ColumnName="NameEmployee" />
           <ScalarProperty Name="FamilyEmployee" ColumnName="FamilyEmployee" />
-          <ScalarProperty Name="Currencie" ColumnName="Currencie" />
+          <ScalarProperty Name="ID_Currencie" ColumnName="ID_Currencie" />
           <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exchanges">
+      <EntityTypeMapping TypeName="CurrencyExchangeModel.Exchanges">
+        <MappingFragment StoreEntitySet="Exchanges">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+          <ScalarProperty Name="ID_GCurrencie" ColumnName="ID_GCurrencie" />
+          <ScalarProperty Name="ID_SCurrencie" ColumnName="ID_SCurrencie" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

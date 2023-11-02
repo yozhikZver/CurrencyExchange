@@ -90,10 +90,8 @@ namespace WpfApp.Pages.Admin
             foreach (var item in Connect.context.TypesCurrencies)
             {
                 textBox_Currency.Items.Add(item.NameCurrencie.Trim());
-                Console.WriteLine($"В Комбо бокс добавлен {item.NameCurrencie.Trim()}");
             }
-            SetSelectComboBox((int)Row[0].Currencie);
-            Console.WriteLine($"В Комбо бокс выделен {textBox_Currency.SelectedItem}");
+            SetSelectComboBox((int)Row[0].ID_Currencie);
             textBox_Name.Text = Row[0].NameEmployee.ToString().Trim();
             textBox_SurName.Text = Row[0].FamilyEmployee.ToString().Trim();
             textBox_Role.Text = Row[0].Role.ToString().Trim();
@@ -138,7 +136,7 @@ namespace WpfApp.Pages.Admin
                     (item.NameEmployee.StartsWith(textBox_NameF.Text) && textBox_NameF.Text != "") ||
                     (item.FamilyEmployee.StartsWith(textBox_SurNameF.Text) && textBox_SurNameF.Text != "") ||
                     (item.Role.StartsWith(textBox_RoleF.Text) && textBox_RoleF.Text != "") ||
-                    (item.Currencie.ToString().StartsWith(textBox_CurrencyF.Text) && textBox_CurrencyF.Text != "") ||
+                    (item.ID_Currencie.ToString().StartsWith(textBox_CurrencyF.Text) && textBox_CurrencyF.Text != "") ||
                     (item.Login.StartsWith(textBox_LoginF.Text) && textBox_LoginF.Text != "") ||
                     (item.Password.StartsWith(textBox_PasswordF.Text) && textBox_PasswordF.Text != "")))
                 {
@@ -216,7 +214,7 @@ namespace WpfApp.Pages.Admin
                 NameEmployee = textBox_Name.Text,
                 FamilyEmployee = textBox_SurName.Text,
                 Role = textBox_Role.Text,
-                Currencie = textBox_Currency.SelectedIndex,
+                ID_Currencie = textBox_Currency.SelectedIndex,
                 Login = textBox_Login.Text,
                 Password = textBox_Password.Text
             };

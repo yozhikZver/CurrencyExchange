@@ -18,13 +18,20 @@ namespace WpfApp.Class.DataBase
         public TypesCurrencies()
         {
             this.Employees = new HashSet<Employees>();
+            this.Exchanges = new HashSet<Exchanges>();
+            this.Exchanges1 = new HashSet<Exchanges>();
         }
     
         public int ID { get; set; }
         public string NameCurrencie { get; set; }
         public int Count { get; set; }
     
+        public virtual CurseCurrencie CurseCurrencie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exchanges> Exchanges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exchanges> Exchanges1 { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace WpfApp
     {
         public UsersControl UserControl;
         public CurrencyControl CurrencyControl;
+        public CourseControl CourseControl;
         private bool isMenuPanelOpen = false;
         public AdminPage(string Name, string SurName)
         {
@@ -31,6 +32,7 @@ namespace WpfApp
             LabelNameSurName.Content = SurName + " " + Name;
             UserControl = new UsersControl();
             CurrencyControl = new CurrencyControl();
+            CourseControl = new CourseControl();
             AdminFrame.Navigate(UserControl);
         }
 
@@ -111,6 +113,10 @@ namespace WpfApp
         private void ButtonCurrency_Click(object sender, RoutedEventArgs e)
         {
             AdminFrame.Navigate(CurrencyControl);
+        }
+        private void ButtonCuurse_Click(object sender, RoutedEventArgs e)
+        {
+            AdminFrame.Navigate(CourseControl);
         }
         private void ButtonUsers_Click(object sender, RoutedEventArgs e)
         {

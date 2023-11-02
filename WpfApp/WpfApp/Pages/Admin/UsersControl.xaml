@@ -31,7 +31,7 @@
                 <DataGridTextColumn Header="Имя" Binding="{Binding NameEmployee}" />
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding FamilyEmployee}" />
                 <DataGridTextColumn Header="Роль" Binding="{Binding Role}" />
-                <DataGridTextColumn Header="Валюта" Binding="{Binding Currencie}" />
+                <DataGridTextColumn Header="Валюта" Binding="{Binding ID_Currencie}" />
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
             </DataGrid.Columns>
