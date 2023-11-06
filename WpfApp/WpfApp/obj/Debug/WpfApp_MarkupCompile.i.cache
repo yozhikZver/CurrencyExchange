@@ -1,20 +1,20 @@
 ﻿WpfApp
 
 
-exe
+winexe
 C#
 .cs
-C:\Users\user\Documents\GitHub\CurrencyExchange\WpfApp\WpfApp\obj\Debug\
+E:\GitHub\CurrencyExchange\WpfApp\WpfApp\obj\Debug\
 WpfApp
 none
 false
 DEBUG;TRACE
-C:\Users\user\Documents\GitHub\CurrencyExchange\WpfApp\WpfApp\App.xaml
+E:\GitHub\CurrencyExchange\WpfApp\WpfApp\App.xaml
 101755558600
 21072784833
 221004279521
-182013969555
+18-1988422017
 Pages\Admin\AdminPage.xaml;Pages\Admin\CourseControl.xaml;Pages\Admin\CurrencyControl.xaml;Pages\Admin\UsersControl.xaml;Pages\MainWindow.xaml;Pages\PageSingIn.xaml;Pages\User\MainUserPage.xaml;Pages\User\UserPage.xaml;Style\Style.xaml;Style\StyleColors.xaml;
 
-True
+False
 

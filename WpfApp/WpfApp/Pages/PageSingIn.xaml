@@ -18,7 +18,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Style/Style.xaml" />
+                
                 <ResourceDictionary Source="../Style/StyleColors.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
 
 

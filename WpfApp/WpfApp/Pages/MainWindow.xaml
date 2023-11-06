@@ -17,96 +17,98 @@
         WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary Source="../Style/StyleColors.xaml"/>
-        
+
+
+
+
+
     </Window.Resources>
 
 
     <Grid x:Name="MainGrid" MouseDown="MainGrid_MouseDown" Background="#FF1E1E1E">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0"
-                Margin="0"/>
+
         <StackPanel 
             Grid.Row="0" 
             Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="▢" Background="{x:Null}" Foreground="{DynamicResource White}" IsCancel="True" BorderBrush="{x:Null}" Height="25" Width="25" FontFamily="Bodoni MT Condensed">
-                <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="FontSize" Value="14" />
-                            <Setter Property="Foreground" Value="#FFFFFF" />
-                            <Setter Property="Background" Value="Gray" />
-                            <Setter Property="BorderBrush" Value="#0058A5" />
-                            <Setter Property="BorderThickness" Value="2" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#007FFF" />
-                                    <Setter Property="Foreground" Value="#FFFFFF" />
-                                    <Setter Property="BorderBrush" Value="#007FFF" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-            
+            <Button Content="▢" Background="#383838" Foreground="{DynamicResource White}" IsCancel="True" BorderBrush="{x:Null}" Height="32" Width="35" FontFamily="Bodoni MT Condensed" RenderTransformOrigin="0.487,-0.06" FontSize="16">
 
-            <Button    x:Name="ButtonFullScr" Click="ButtonExit_Click"
-                 Content="▢" Background="{x:Null}" Foreground="#FFCACACA" IsCancel="True" FontFamily="Bodoni MT Condensed" BorderBrush="{x:Null}" Height="25" Width="25">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
                 <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="{StaticResource DarkGray}" />
-                        <Setter Property="Foreground" Value="{StaticResource White}" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource Gray}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="{StaticResource Red}"/>
-                            </Trigger>
-                        </Style.Triggers>
+                    <Style TargetType="Button">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="DarkGray"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Name="border"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF383838"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF383838"/>
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#FF383838"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="border" Property="Background" Value="#FF383838"/>
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#FF383838"/>
+                                            <Setter Property="Foreground" Value="#FFB0B0B0"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
                 </Button.Style>
-
             </Button>
+            <Button Content="✕"  Background="#383838" Foreground="{DynamicResource White}" IsCancel="True" BorderBrush="{x:Null}" Height="32" Width="35" FontFamily="Bodoni MT Condensed" RenderTransformOrigin="0.487,-0.06" FontSize="16" Click="ButtonExit_Click">
 
-            <Button 
-                x:Name="ButtonClose" Click="ButtonExit_Click" Height="25" Width="25" 
-                Content="✕" Background="{x:Null}" Foreground="{StaticResource White}" FontFamily="Bodoni MT Condensed">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-
-                </Button.Template>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
-
-
-
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource LightGray}"/>
-                            </Trigger>
-
-                        </Style.Triggers>
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="DarkGray"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF383838"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF383838"/>
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#FF383838"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter TargetName="border" Property="Background" Value="#FF383838"/>
+                                            <Setter TargetName="border" Property="BorderBrush" Value="#FF383838"/>
+                                            <Setter Property="Foreground" Value="#FFB0B0B0"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
                 </Button.Style>
-
             </Button>
         </StackPanel>
-        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Row="1" Content="✕"/>
+
+        <Frame NavigationUIVisibility="Hidden" x:Name="MainFrame" Grid.Row="1" VerticalAlignment="Top" Margin="0,0,0,0"/>
     </Grid>
 </Window>
