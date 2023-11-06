@@ -5,64 +5,87 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageSingIn">
+     d:DesignHeight="550" d:DesignWidth="800" 
+      Title="PageSingIn" 
+    
+      MaxHeight="550" 
+      MaxWidth="800"
+      MinHeight="550" 
+      MinWidth="800" >
+
+
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Style/Style.xaml" />
                 <ResourceDictionary Source="../Style/StyleColors.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel 
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
+        <Label  
+           
+                Foreground="{DynamicResource White}"
+                FontSize="24"
+                Content="CurrencyExchange" Margin="81,108,73,404" FontFamily="Cascadia Mono Light" />
+
+        <StackPanel
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="334,197,0,0">
             <Label  
            
             Foreground="{StaticResource White}"
-            Grid.Column="1"
             FontSize="20"
-            Content="Добро пожаловать&#10;Войдите в систему для начала работы!" />
+            Content="Добро пожаловать&#xA;Войдите в систему для начала работы!" FontFamily="Dubai Light" FontWeight="Bold" />
             <Label  
            
             Foreground="{StaticResource White}"
-            Grid.Column="1"
             FontSize="16"
-            Content="Если вы не знаете логин или пароль,&#10;то обратитесь к Администратору" />
+            Content="Если вы не знаете логин или пароль,&#xA;то обратитесь к Администратору" FontFamily="Dubai Light" FontWeight="Bold" />
         </StackPanel>
         <StackPanel 
-            VerticalAlignment="Center" HorizontalAlignment="Center" 
-            Orientation="Vertical">
+            VerticalAlignment="Center" HorizontalAlignment="Left" 
+            Orientation="Vertical" Margin="81,0,0,0">
+            <Label  
+           
+            Foreground="{DynamicResource White}"
+            Content="Login" Height="24" Width="80" HorizontalAlignment="Left" Margin="0,0,0,-5" FontFamily="Cascadia Code SemiLight" FontSize="14" FontWeight="Bold" FontStyle="Italic" />
             <TextBox 
                 x:Name="TextBoxLogin"
-                Style="{StaticResource TextBox}"/>
+                 Style="{StaticResource TextBox}" Height="39" Background="{x:Null}" Text="" />
+
+
+            <Label  
+           
+            Foreground="{DynamicResource White}"
+            Content="Password" Height="24" Width="80" HorizontalAlignment="Left" Margin="0,0,0,-5" FontFamily="Cascadia Code SemiLight" FontSize="14" FontWeight="Bold" FontStyle="Italic" />
             <PasswordBox 
                 x:Name="TextBoxLoginPassword"
-                Style="{StaticResource TextBoxPassword}"/>
-            
+                
+                Style="{StaticResource TextBoxPassword}" Height="39" Background="{x:Null}" BorderBrush="#FFAB9595" />
+
             <Label
                 x:Name="LabeWarning" FontSize="12" 
                 Height="Auto" Width="210" Margin="5" 
                 Background="Transparent" Foreground="Red"
-                ></Label>
+                />
             <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button 
                     x:Name="ButtonExit" Click="ButtonExit_Click" 
                     IsCancel="True" Content="Exit" 
-                    Style="{StaticResource Button}" Width="100"/>
+                    Style="{StaticResource Button}" Width="100" FontFamily="Cascadia Code SemiLight"/>
                 <Button 
                     x:Name="ButtonLogin" Click="ButtonLogin_Click" 
                     IsDefault="True" Content="Login"  
-                    Style="{StaticResource Button}" Width="100"/>
+                    Style="{StaticResource Button}" Width="100" FontFamily="Cascadia Code SemiLight"/>
             </StackPanel>
         </StackPanel>
 

@@ -13,39 +13,88 @@
                 <ResourceDictionary Source="../../Style/Style.xaml"/>
                 <ResourceDictionary Source="../../Style/StyleColors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+           
+            <Style TargetType="DataGridRowHeader">
+                <Setter Property="Background" Value="#111"/>
+                <Setter Property="Foreground" Value="#111"/>
+                <Setter Property="BorderBrush" Value="#555"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+            
+            
+            <Style TargetType="Grid">
+                <Setter Property="Background" Value="red"/>
+                <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            </Style>
+            
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="#111"/>
+                <Setter Property="Height" Value="32"/>
+            </Style>
+            <Style TargetType="{x:Type DataGrid}">
+
+                <Setter Property="Background" Value="#111"/>
+                <Setter Property="Foreground" Value="#111"/>
+                <Setter Property="BorderBrush" Value="#555"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="RowBackground" Value="#444"/>
+                <Setter Property="AlternatingRowBackground" Value="#333"/>
+                <Setter Property="RowHeaderWidth" Value="0"/>
+
+                <Setter Property="GridLinesVisibility" Value="None"/>
+                <Setter Property="HorizontalGridLinesBrush" Value="#444"/>
+                <Setter Property="VerticalGridLinesBrush" Value="#444"/>
+            </Style>
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Loaded="Grid_Loaded" >
+    <Grid Loaded="Grid_Loaded"  ShowGridLines ="False">
+
+        <Grid.Resources>
+            <Style TargetType="{x:Type Grid}">
+                <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="457*"/>
+            <ColumnDefinition Width="343*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <DataGrid VerticalAlignment="Stretch"
-                  CanUserAddRows="False"
+        <DataGrid
+                   GridLinesVisibility="None"
+         
+            CanUserAddRows="False"
+               
             x:Name="dataGrid" AutoGenerateColumns="False" 
                   IsReadOnly="True"
-            FontSize="20"  >
+            FontSize="16" Background="{x:Null}" IsSynchronizedWithCurrentItem="True" FontFamily="Cascadia Mono ExtraLight" Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"  >
+
+           
+         
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding NameEmployee}" />
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding FamilyEmployee}" />
-                <DataGridTextColumn Header="Роль" Binding="{Binding Role}" />
-                <DataGridTextColumn Header="Валюта" Binding="{Binding ID_Currencie}" />
-                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header=" ID" Binding="{Binding ID}" MinWidth="40" MaxWidth="40"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding NameEmployee}" MinWidth="100" MaxWidth="100" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding FamilyEmployee}" MinWidth="100" MaxWidth="100" />
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role}"  MinWidth="80" MaxWidth="80" />
+                <DataGridTextColumn Header="💰" Binding="{Binding ID_Currencie}"  MinWidth="40" MaxWidth="40" />
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"  MinWidth="100" MaxWidth="100"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"  MinWidth="100" MaxWidth="100"/>
             </DataGrid.Columns>
         </DataGrid>
+        
 
-        <Grid x:Name="GridAdd" HorizontalAlignment="Left"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+        <Grid x:Name="GridAdd" HorizontalAlignment="Left" ShowGridLines ="False"
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Margin="0,0,0,80" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -54,7 +103,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
             <Border Grid.ColumnSpan="10" Grid.RowSpan="10" Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray}" BorderThickness="1" CornerRadius="7"/>
 
             <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Имя</Label>
@@ -72,16 +121,16 @@
 
             </ComboBox>
             <!--<TextBox Grid.Row="4" Grid.Column="1" x:Name="textBox_Currency"  Style="{StaticResource TextBoxDef}" Margin="10,10" />-->
-            
+
             <TextBox Grid.Row="6" Grid.Column="0" x:Name="textBox_Login"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
             <TextBox Grid.Row="6" Grid.Column="1" x:Name="textBox_Password"  Style="{StaticResource TextBoxDef}" Margin="10,10" />
-            
+
             <Button Grid.Row="8" Grid.Column="0" Click="Cancel_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Отмена"/>
             <Button Grid.Row="8" Grid.Column="1" x:Name="Button_Сonfirm" Click="Button_Сonfirm_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Добавить"/>
 
         </Grid>
         <Grid x:Name="GridFind" HorizontalAlignment="Right"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent">
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Grid.Column="1" Margin="0,0,0,80" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -118,7 +167,8 @@
             <Button Grid.Row="8" Grid.Column="1" Click="Button_СonfirmFind_Click" Style="{StaticResource ButtonDef}" Margin="10,10" Content="Сброс"/>
 
         </Grid>
-        <Grid Grid.Row="1">
+    
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -131,4 +181,5 @@
             <Button Style="{StaticResource ButtonDef}"  Grid.Column="3" x:Name="FindBtn" Content="Поиск" Click="FindBtn_Click" Margin="10"/>
         </Grid>
     </Grid>
+    
 </Page>

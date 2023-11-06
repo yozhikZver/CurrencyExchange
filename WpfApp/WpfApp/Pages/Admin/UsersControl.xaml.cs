@@ -62,7 +62,7 @@ namespace WpfApp.Pages.Admin
 
 
         }
-        private void Update() { Console.WriteLine("Обновление таблицы пользователи"); Connect.c = null; dataGrid.ItemsSource = Connect.context.Employees.ToList(); }
+        private void Update() { Console.WriteLine("Обновление таблицы пользователи"); Connect.c = null; dataGrid.ItemsSource = null; dataGrid.Items.Clear(); dataGrid.ItemsSource = Connect.context.Employees.ToList(); }
         private void RmoveBtn_Click(object sender, RoutedEventArgs e)
         {
             var rows = dataGrid.SelectedItems.Cast<Employees>().ToList();
