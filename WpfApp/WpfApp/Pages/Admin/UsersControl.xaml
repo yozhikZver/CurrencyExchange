@@ -13,11 +13,11 @@
                 <ResourceDictionary Source="../../Style/Style.xaml"/>
                 <ResourceDictionary Source="../../Style/StyleColors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-           
+         
             <Style TargetType="DataGridRowHeader">
                 <Setter Property="Background" Value="#111"/>
                 <Setter Property="Foreground" Value="#111"/>
-                <Setter Property="BorderBrush" Value="#555"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>
             
@@ -32,18 +32,19 @@
                 <Setter Property="Height" Value="32"/>
             </Style>
             <Style TargetType="{x:Type DataGrid}">
-
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 <Setter Property="Background" Value="#111"/>
                 <Setter Property="Foreground" Value="#111"/>
-                <Setter Property="BorderBrush" Value="#555"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <!-- <Setter Property="SelectionBrush" Value="YellowGreen"/> -->
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="RowBackground" Value="#444"/>
-                <Setter Property="AlternatingRowBackground" Value="#333"/>
+                <Setter Property="RowBackground" Value="Transparent"/>
+                <Setter Property="AlternatingRowBackground" Value="Transparent"/>
                 <Setter Property="RowHeaderWidth" Value="0"/>
 
                 <Setter Property="GridLinesVisibility" Value="None"/>
-                <Setter Property="HorizontalGridLinesBrush" Value="#444"/>
-                <Setter Property="VerticalGridLinesBrush" Value="#444"/>
+                <Setter Property="HorizontalGridLinesBrush" Value="Transparent"/>
+                <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
             </Style>
         </ResourceDictionary>
     </Page.Resources>
@@ -61,7 +62,8 @@
         </Grid.RowDefinitions>
       
         <DataGrid
-                   GridLinesVisibility="None"         
+            SelectionUnit="FullRow"
+            
             CanUserAddRows="False"               
             x:Name="dataGrid" AutoGenerateColumns="False" 
                   IsReadOnly="True"
@@ -69,8 +71,35 @@
             IsSynchronizedWithCurrentItem="True" FontFamily="Cascadia Mono ExtraLight" 
             Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"  >
 
-           
-         
+            <DataGrid.Resources>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Style>
+                <Style TargetType="DataGridRow">
+                    
+                    <Setter Property="BorderThickness" Value="0"/>
+                 
+                     
+                   
+                    
+                    <Style.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="#111"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                             <Setter Property="Background" Value="#111"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#262626"/>
+                            
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                  <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/> 
+            </DataGrid.Resources>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header=" ID" Binding="{Binding ID}" MinWidth="40" MaxWidth="40"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding NameEmployee}" MinWidth="100" MaxWidth="100" />
@@ -81,9 +110,7 @@
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"  MinWidth="100" MaxWidth="100"/>
             </DataGrid.Columns>
         </DataGrid>
-        
-        <!--Грид добовления 
-        с Редактированием-->
+     
         <Grid x:Name="GridAdd" HorizontalAlignment="Left"
               VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Margin="0,0,0,0" Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -103,7 +130,7 @@
             </Grid.RowDefinitions>
 
             <Border Grid.ColumnSpan="10" Grid.RowSpan="10" Background="{StaticResource Gray}" BorderBrush="{StaticResource Gray}" BorderThickness="1" CornerRadius="7"/>
-
+ 
             <Label Grid.Row="1" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Имя</Label>
             <Label Grid.Row="1" Grid.Column="1" Margin="10,0" Style="{StaticResource LabelDef}">Фамилия</Label>
             <Label Grid.Row="3" Grid.Column="0" Margin="10,0" Style="{StaticResource LabelDef}">Роль</Label>
@@ -128,7 +155,7 @@
 
         </Grid>
         <Grid x:Name="GridFind" HorizontalAlignment="Right"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Grid.Column="1" Margin="0,0,0,0" Grid.Row="0">
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Grid.Column="1" Margin="0,0,0,  0" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

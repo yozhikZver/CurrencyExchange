@@ -23,7 +23,7 @@ namespace WpfApp
     public partial class MainWindow : Window
     {
         public static MainWindow Instance { get; private set; }
-           
+
         public PageSingIn pageSingIn = new PageSingIn();
         public MainWindow()
         {
@@ -31,18 +31,30 @@ namespace WpfApp
             Instance = this;
             MainFrame.Content = pageSingIn;
         }
-         
+
 
         private void MainGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-                if (e.ChangedButton == MouseButton.Left)
-                    this.DragMove();
-            
-        } 
-        
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+
+        }
+
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Button_ClickMaximize(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
         }
     }
 }

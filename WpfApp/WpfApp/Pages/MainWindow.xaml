@@ -35,7 +35,7 @@
         <StackPanel 
             Grid.Row="0" 
             Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="▢" Background="#383838" Foreground="{DynamicResource White}" IsCancel="True" BorderBrush="{x:Null}" Height="32" Width="35" FontFamily="Bodoni MT Condensed" RenderTransformOrigin="0.487,-0.06" FontSize="16">
+            <Button Content="▢" Background="#383838" Foreground="{DynamicResource White}" IsCancel="True" BorderBrush="{x:Null}" Height="32" Width="35" FontFamily="Bodoni MT Condensed" RenderTransformOrigin="0.487,-0.06" FontSize="16" Click="Button_ClickMaximize">
 
                 <Button.Style>
                     <Style TargetType="Button">
