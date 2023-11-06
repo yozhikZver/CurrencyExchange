@@ -55,22 +55,19 @@
                 <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
             </Style>
         </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="457*"/>
-            <ColumnDefinition Width="343*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
+      
         <DataGrid
-                   GridLinesVisibility="None"
-         
-            CanUserAddRows="False"
-               
+                   GridLinesVisibility="None"         
+            CanUserAddRows="False"               
             x:Name="dataGrid" AutoGenerateColumns="False" 
                   IsReadOnly="True"
-            FontSize="16" Background="{x:Null}" IsSynchronizedWithCurrentItem="True" FontFamily="Cascadia Mono ExtraLight" Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"  >
+            FontSize="16" Background="{x:Null}" 
+            IsSynchronizedWithCurrentItem="True" FontFamily="Cascadia Mono ExtraLight" 
+            Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"  >
 
            
          
@@ -85,9 +82,10 @@
             </DataGrid.Columns>
         </DataGrid>
         
-
-        <Grid x:Name="GridAdd" HorizontalAlignment="Left" ShowGridLines ="False"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Margin="0,0,0,80" Grid.Row="1">
+        <!--Грид добовления 
+        с Редактированием-->
+        <Grid x:Name="GridAdd" HorizontalAlignment="Left"
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Margin="0,0,0,0" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -130,7 +128,7 @@
 
         </Grid>
         <Grid x:Name="GridFind" HorizontalAlignment="Right"
-              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Grid.Column="1" Margin="0,0,0,80" Grid.Row="1">
+              VerticalAlignment="Bottom" Height="0" Width="0" Background="Transparent" Grid.Column="1" Margin="0,0,0,0" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
