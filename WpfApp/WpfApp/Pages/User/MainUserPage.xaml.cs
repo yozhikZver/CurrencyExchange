@@ -23,10 +23,16 @@ namespace WpfApp.Pages.User
         public MainUserPage()
         {
             InitializeComponent();
+
         }
         private void Update()
         {
+       
+        }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            myComboBox.Text = "Выберите элемент";
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)

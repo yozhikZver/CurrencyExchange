@@ -4,7 +4,57 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="StyleColors.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <!-- Текстбоксы и кнопки при входе-->
+    <SolidColorBrush x:Key="ComboBoxBackgroundBrush" Color="Black"/>
+    <Style TargetType="DataGridRowHeader">
+        <Setter Property="Background" Value="#111"/>
+        <Setter Property="Foreground" Value="#111"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="{x:Type ComboBox}">
+        
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Foreground" Value="White"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource GrayOt}"/>
+                <Setter Property="FontWeight" Value="Bold" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <!-- Стиль для Grid -->
+    <Style TargetType="{x:Type Grid}">
+        <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+    </Style>
+
+    <!-- Стиль для заголовка столбца DataGrid -->
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="#111"/>
+        <Setter Property="Height" Value="32"/>
+    </Style>
+
+    <!-- Стиль для DataGrid -->
+    <Style TargetType="{x:Type DataGrid}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="#111"/>
+        <Setter Property="Foreground" Value="#111"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <!-- <Setter Property="SelectionBrush" Value="YellowGreen"/> -->
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="RowBackground" Value="Transparent"/>
+        <Setter Property="AlternatingRowBackground" Value="Transparent"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="Transparent"/>
+        <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+    </Style>
+
+    <!-- Стиль для текстовых полей и кнопок при входе -->
     <Style x:Key="TextBox" TargetType="TextBox">
         <Setter Property="BorderBrush" Value="{StaticResource Light}"/>
         <Setter Property="Height" Value="40"/>
@@ -15,6 +65,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource White}"/>
     </Style>
+
     <Style x:Key="TextBoxPassword" TargetType="PasswordBox">
         <Setter Property="BorderBrush" Value="{StaticResource Light}" />
         <Setter Property="Height" Value="40"/>
@@ -25,6 +76,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource White}"/>
     </Style>
+
     <Style x:Key="Button" TargetType="Button">
         <Setter Property="BorderBrush" Value="{StaticResource Light}" />
         <Setter Property="Height" Value="40"/>
@@ -35,7 +87,7 @@
         <Setter Property="Foreground" Value="{StaticResource White}"/>
     </Style>
 
-    <!-- Кнопки выдвижной менюшки при входе-->
+    <!-- Стиль для кнопок выдвижной менюшки при входе -->
     <Style x:Key="ButtonExit" TargetType="Button">
 
         <Setter Property="BorderBrush" Value="{StaticResource Light}"/>
@@ -59,23 +111,22 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
         </Style.Resources>
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource GrayOt}"/>
                 <Setter Property="FontWeight" Value="Bold" />
-
             </Trigger>
-
         </Style.Triggers>
-
     </Style>
-    <Style x:Key="TextBoxMenu" TargetType="Button">
 
+    <Style x:Key="TextBoxMenu" TargetType="Button">
         <Setter Property="BorderBrush" Value="{StaticResource Light}"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="Width" Value="250"/>
@@ -86,7 +137,9 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{StaticResource White}"/>
-
+        <Setter Property="FontSize" Value="4"/>
+        <Setter Property="FontFamily" Value="Cascadia Mono ExtraLight"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -97,23 +150,23 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Resources>
             <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="5"/>
+                <!--<Setter Property="CornerRadius" Value="5"/>-->
             </Style>
         </Style.Resources>
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource LightGray}"/>
-                <Setter Property="FontWeight" Value="Bold" />
-
+                <!--<Setter Property="FontWeight" Value="Bold" />-->
             </Trigger>
-
         </Style.Triggers>
-
     </Style>
-    <Style x:Key="ButtonDef" TargetType="Button">
 
+    <!-- Стиль для кнопки по умолчанию -->
+    <Style x:Key="ButtonDef" TargetType="Button">
         <Setter Property="BorderBrush" Value="{StaticResource Light}"/>
         <Setter Property="FontFamily" Value="Cascadia Mono ExtraLight"/>
         <Setter Property="FontSize" Value="20"/>
@@ -132,33 +185,36 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
         <Style.Resources>
             <Style TargetType="Border">
                 <!--<Setter Property="CornerRadius" Value="5"/>-->
             </Style>
         </Style.Resources>
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{StaticResource LightGray}"/>
                 <!--<Setter Property="FontWeight" Value="Bold" />-->
-
             </Trigger>
-
         </Style.Triggers>
+    </Style>
 
-    </Style>    
+    <!-- Стиль для метки по умолчанию -->
     <Style x:Key="LabelDef" TargetType="Label">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="Foreground" Value="{StaticResource Light}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
+            
             <Setter.Value>
                 <ControlTemplate TargetType="Label">
                     <Border 
-                        BorderBrush="{StaticResource Light}" 
-                        BorderThickness="1">
+                        BorderBrush="Transparent" 
+                        BorderThickness="0">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             RecognizesAccessKey="True" />
@@ -166,21 +222,24 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
+    </Style>
+
+    <!-- Стиль для текстового поля по умолчанию -->
     <Style x:Key="TextBoxDef" TargetType="TextBox">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource White}"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <!--<Setter Property="BorderThickness" Value="0"/>-->
         <Setter Property="Cursor" Value="Arrow"/>
         
         <Setter Property="Template">
             
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="border" BorderBrush="{StaticResource White}" BorderThickness="1">
+                    <Border x:Name="border"  BorderBrush="#ACACAC" BorderThickness="2">
 
                         <ScrollViewer x:Name="PART_ContentHost"
                             Focusable="false"
@@ -191,13 +250,14 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#909090"/>
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource LightGray}"/>
-                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="#5E2129"/>
+                            <Setter Property="BorderThickness" TargetName="border" Value="2"/>
+                            <!--<Setter Property="Background" TargetName="border" Value="{StaticResource LightGray}"/>-->
+                                
                         </Trigger>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource GrayOt}"/>
-                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Background" TargetName="border" Value=" #1C1C1C"/>
+                            <!--<Setter Property="FontWeight" Value="Bold" />-->
                             
                         </Trigger>
                     </ControlTemplate.Triggers>

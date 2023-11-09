@@ -27,8 +27,10 @@ namespace WpfApp
         public PageSingIn pageSingIn = new PageSingIn();
         public MainWindow()
         {
+         
             InitializeComponent();
             Instance = this;
+       
             MainFrame.Content = pageSingIn;
         }
 
@@ -55,6 +57,11 @@ namespace WpfApp
             {
                 this.WindowState = WindowState.Normal;
             }
+        }
+
+        private void ButtonExit_Click_Hide(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

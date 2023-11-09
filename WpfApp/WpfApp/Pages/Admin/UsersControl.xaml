@@ -14,47 +14,13 @@
                 <ResourceDictionary Source="../../Style/StyleColors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
          
-            <Style TargetType="DataGridRowHeader">
-                <Setter Property="Background" Value="#111"/>
-                <Setter Property="Foreground" Value="#111"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
-                <Setter Property="BorderThickness" Value="0"/>
-            </Style>
-            
-            
-            <Style TargetType="Grid">
-                <Setter Property="Background" Value="red"/>
-                <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-            </Style>
-            
-            <Style TargetType="DataGridColumnHeader">
-                <Setter Property="Background" Value="#111"/>
-                <Setter Property="Height" Value="32"/>
-            </Style>
-            <Style TargetType="{x:Type DataGrid}">
-                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                <Setter Property="Background" Value="#111"/>
-                <Setter Property="Foreground" Value="#111"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
-                <!-- <Setter Property="SelectionBrush" Value="YellowGreen"/> -->
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="RowBackground" Value="Transparent"/>
-                <Setter Property="AlternatingRowBackground" Value="Transparent"/>
-                <Setter Property="RowHeaderWidth" Value="0"/>
-
-                <Setter Property="GridLinesVisibility" Value="None"/>
-                <Setter Property="HorizontalGridLinesBrush" Value="Transparent"/>
-                <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
-            </Style>
         </ResourceDictionary>
     </Page.Resources>
 
     <Grid Loaded="Grid_Loaded"  ShowGridLines ="False">
 
         <Grid.Resources>
-            <Style TargetType="{x:Type Grid}">
-                <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
-            </Style>
+            
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition/>
