@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <ProjectGuidesConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectItemGuides>
+    <ProjectItemGuide TargetFile="Pages\MainWindow.xaml">
+      <GuideModels>
+        <GuideModel>
+          <Guides>
+            <Guide Alignment="Bottom" Position="534" />
+            <Guide Alignment="Top" Position="18" />
+          </Guides>
+        </GuideModel>
+      </GuideModels>
+    </ProjectItemGuide>
     <ProjectItemGuide TargetFile="Pages\PageSingIn.xaml">
       <GuideModels>
         <GuideModel>
@@ -12,24 +22,14 @@
         </GuideModel>
       </GuideModels>
     </ProjectItemGuide>
-    <ProjectItemGuide TargetFile="Pages\MainWindow.xaml">
-      <GuideModels>
-        <GuideModel>
-          <Guides>
-            <Guide Alignment="Bottom" Position="534" />
-            <Guide Alignment="Top" Position="18" />
-          </Guides>
-        </GuideModel>
-      </GuideModels>
-    </ProjectItemGuide>
     <ProjectItemGuide TargetFile="Pages\User\MainUserPage.xaml">
       <GuideModels>
         <GuideModel>
           <Guides>
             <Guide Alignment="Top" Position="-146" />
-            <Guide Alignment="Top" Position="110" />
-            <Guide Alignment="Top" Position="175" />
-            <Guide Alignment="Top" Position="210" />
+            <Guide Alignment="Top" Position="-60" />
+            <Guide Alignment="Top" Position="-113" />
+            <Guide Alignment="Top" Position="-109" />
           </Guides>
         </GuideModel>
       </GuideModels>

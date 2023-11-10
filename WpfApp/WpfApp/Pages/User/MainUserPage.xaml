@@ -202,6 +202,37 @@
                     </Trigger>
                 </ControlTemplate.Triggers>
             </ControlTemplate>
+            <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Transparent"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#5E2129"/>
+            <!--<SolidColorBrush x:Key="button.mouseover.foreground" Color="Black"/>-->
+            <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+            <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+            <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+            <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+            <ControlTemplate x:Key="ButtonTemplate1" TargetType="{x:Type ButtonBase}">
+                <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                    <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="Button.IsDefaulted" Value="true">
+                        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="true">
+                        <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="false">
+                        <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                        <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                        <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
         </ResourceDictionary>
     </Page.Resources>
     <Border Loaded="Grid_Loaded">
@@ -222,7 +253,7 @@
                     Cursor="" SelectionOpacity="-3" BorderBrush="#ACACAC"/>
                 <TextBox Style="{StaticResource TextBoxDef}" BorderThickness="2" Height="35" FontSize="13" FontWeight="Bold" FontFamily="Cascadia Mono Light" Canvas.Top="65" Width="101" BorderBrush="#FFDED9D9"/>
             </Canvas>
-            <Canvas Margin="22,79,562,225">
+            <Canvas Margin="22,79,562,183">
                 <Label
                     FontSize="13" 
                     FontFamily="Candara" 
@@ -389,15 +420,15 @@
                         </Style>
 
                     </ComboBox.ItemContainerStyle>
-
                     <ComboBoxItem FontSize="13" Padding="12"  Content="RUB Российский рубль"/>
                     <ComboBoxItem FontSize="13" Content="USD Долар США"/>
                     <ComboBoxItem FontSize="13" Content="EUR Евро"/>
 
                 </ComboBox>
+                <Button Template="{DynamicResource ButtonTemplate1}"   FontSize="13"  Foreground="White"
+             FontFamily="Cascadia Mono Light" BorderThickness="2"  Style="{StaticResource Button}" Height="35" Content="Обменять" Canvas.Left="-6" Canvas.Top="143" Width="148"/>
 
             </Canvas>
-            <Button  Style="{StaticResource Button}" Height="35" Content="Обменять" Margin="22,232,630,183"/>
         </Grid>
     </Border>
 </Page>

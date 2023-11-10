@@ -18,7 +18,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Style/Style.xaml" />
-                
+
                 <ResourceDictionary Source="../Style/StyleColors.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
@@ -37,11 +37,11 @@
            
                 Foreground="{DynamicResource White}"
                 FontSize="24"
-                Content="CurrencyExchange" Margin="81,108,73,404" FontFamily="Cascadia Mono Light" />
+                Content="CurrencyExchange" Margin="104,112,50,400" FontFamily="Cascadia Mono Light" />
 
         <StackPanel
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="334,197,0,0">
+            VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="357,201,0,0">
             <Label  
            
             Foreground="{StaticResource White}"
@@ -54,8 +54,8 @@
             Content="Если вы не знаете логин или пароль,&#xA;то обратитесь к Администратору" FontFamily="Dubai Light" FontWeight="Bold" />
         </StackPanel>
         <StackPanel 
-            VerticalAlignment="Center" HorizontalAlignment="Left" 
-            Orientation="Vertical" Margin="81,0,0,0">
+            VerticalAlignment="Top" HorizontalAlignment="Left" 
+            Orientation="Vertical" Margin="104,176,0,0">
             <Label  
            
             Foreground="{DynamicResource White}"
