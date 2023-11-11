@@ -1,17 +1,19 @@
-﻿<Page x:Class="WpfApp.PageSingIn"
+﻿<Page x:Name="Page1" x:Class="WpfApp.PageSingIn"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
       mc:Ignorable="d" 
-     d:DesignHeight="550" d:DesignWidth="800" 
+      d:DesignHeight="450" d:DesignWidth="776"
       Title="PageSingIn" 
-    
-      MaxHeight="550" 
-      MaxWidth="800"
-      MinHeight="550" 
-      MinWidth="800" >
+      Height="450"
+      Width="776"
+      MaxHeight="450" 
+      MaxWidth="776"
+      MinHeight="450" 
+      MinWidth="776"
+       >
 
 
     <Page.Resources>
@@ -26,49 +28,44 @@
 
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <Canvas>
 
         <Label  
            
-                Foreground="{DynamicResource White}"
-                FontSize="24"
-                Content="CurrencyExchange" Margin="104,112,50,400" FontFamily="Cascadia Mono Light" />
+            Foreground="{DynamicResource White}"
+            FontSize="24"
+            Content="CurrencyExchange" FontFamily="Cascadia Mono Light" Height="74" Canvas.Left="92" Canvas.Top="47" Width="222" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
         <StackPanel
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="357,201,0,0">
+            VerticalAlignment="Top" Canvas.Left="345" Canvas.Top="136">
             <Label  
            
-            Foreground="{StaticResource White}"
-            FontSize="20"
-            Content="Добро пожаловать&#xA;Войдите в систему для начала работы!" FontFamily="Dubai Light" FontWeight="Bold" />
-            <Label  
+                Foreground="{StaticResource White}"
+                FontSize="20"
+                Content="Добро пожаловать&#xA;Войдите в систему для начала работы!" FontFamily="Dubai Light" FontWeight="Bold" />
+            <Label x:Name="Label23"  
            
-            Foreground="{StaticResource White}"
-            FontSize="16"
-            Content="Если вы не знаете логин или пароль,&#xA;то обратитесь к Администратору" FontFamily="Dubai Light" FontWeight="Bold" />
+                Foreground="{StaticResource White}"
+                FontSize="16"
+                Content="Если вы не знаете логин или пароль,&#xA;то обратитесь к Администратору" FontFamily="Dubai Light" FontWeight="Bold" Loaded="Label23_Loaded" />
         </StackPanel>
         <StackPanel 
             VerticalAlignment="Top" HorizontalAlignment="Left" 
-            Orientation="Vertical" Margin="104,176,0,0">
+            Orientation="Vertical" Canvas.Left="92" Canvas.Top="111">
             <Label  
            
-            Foreground="{DynamicResource White}"
-            Content="Login" Height="24" Width="80" HorizontalAlignment="Left" Margin="0,0,0,-5" FontFamily="Cascadia Code SemiLight" FontSize="14" FontWeight="Bold" FontStyle="Italic" />
+                Foreground="{DynamicResource White}"
+                Content="Login" Height="24" Width="80" HorizontalAlignment="Left" Margin="0,0,0,-5" FontFamily="Cascadia Code SemiLight" FontSize="14" FontWeight="Bold" FontStyle="Italic" />
             <TextBox 
                 x:Name="TextBoxLogin"
-                 Style="{StaticResource TextBox}" Height="39" Background="{x:Null}" Text="" />
+                Style="{StaticResource TextBox}" Height="39" Background="{x:Null}" Text="" />
 
 
             <Label  
            
-            Foreground="{DynamicResource White}"
-            Content="Password" Height="24" Width="80" HorizontalAlignment="Left" Margin="0,0,0,-5" FontFamily="Cascadia Code SemiLight" FontSize="14" FontWeight="Bold" FontStyle="Italic" />
+                Foreground="{DynamicResource White}"
+                Content="Password" Height="24" Width="80" HorizontalAlignment="Left" Margin="0,0,0,-5" FontFamily="Cascadia Code SemiLight" FontSize="14" FontWeight="Bold" FontStyle="Italic" />
             <PasswordBox 
                 x:Name="TextBoxLoginPassword"
                 
@@ -90,6 +87,5 @@
                     Style="{StaticResource Button}" Width="100" FontFamily="Cascadia Code SemiLight"/>
             </StackPanel>
         </StackPanel>
-
-    </Grid>
+    </Canvas>
 </Page>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,7 +32,7 @@ namespace WpfApp
          
             InitializeComponent();
             Instance = this;
-       
+            
             MainFrame.Content = pageSingIn;
         }
 
@@ -62,6 +64,21 @@ namespace WpfApp
         private void ButtonExit_Click_Hide(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void Window1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+                     //if (win.Content is WpfApp.PageSingIn)
+            //{
+            //   Window swin = Application.Current.MainWindow;
+            //    PageSingIn page = new PageSingIn();
+            //    swin.Width = page.Width;
+            //    swin.Height = page.Height;
+            //    swin.MinHeight = page.MinHeight;
+            //    swin.MinWidth = page.MinWidth;
+            //}
+
         }
     }
 }

@@ -4,10 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp.Pages.User"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+  
       Title="MainUserPage"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Height="397" Width="568">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -235,200 +235,207 @@
             </ControlTemplate>
         </ResourceDictionary>
     </Page.Resources>
-    <Border Loaded="Grid_Loaded">
-        <Grid>
+    <Page.Background>
+        <ImageBrush/>
+    </Page.Background>
+    <Grid>
 
-            <Label 
-               FontSize="13" 
- FontFamily="Candara" Foreground="#FFDED9D9" Content="Курс обмена: ........... = ..........." Margin="181,240,436,183" />
-            <Canvas Height="NaN" Margin="257,110,442,240">
-                <TextBox  
-                    Style="{StaticResource TextBoxDef}"
-                    BorderThickness="23" 
-                    Height="35" 
-                    FontSize="13"
-                    Foreground="White"
-                    FontFamily="Cascadia Mono Light" 
-                    Width="101"
-                    Cursor="" SelectionOpacity="-3" BorderBrush="#ACACAC"/>
-                <TextBox Style="{StaticResource TextBoxDef}" BorderThickness="2" Height="35" FontSize="13" FontWeight="Bold" FontFamily="Cascadia Mono Light" Canvas.Top="65" Width="101" BorderBrush="#FFDED9D9"/>
-            </Canvas>
-            <Canvas Margin="22,79,562,183">
-                <Label
-                    FontSize="13" 
-                    FontFamily="Candara" 
-                    Content="Отдаёте"
-                    Height="24"
-                    Width="200" Foreground="#FFDED9D9" HorizontalAlignment="Center" Canvas.Top="7" VerticalAlignment="Top"/>
+        <Label 
+                        FontSize="17" 
+                        FontFamily="Candara" Foreground="#FFDED9D9" Content="Курс обмена: 1 = 92,05" Margin="238,276,124,88" />
+        <Label 
+                FontSize="30"
+                FontFamily="Candara" Foreground="#FFDED9D9" Content="20:15" Margin="443,10,10,338" />
+        <Canvas Height="NaN" Margin="317,154,197,144">
+            <TextBox  
+                            Style="{StaticResource TextBoxDef}"
+                         
+                            Height="35" 
+                            FontSize="13"
+                            Foreground="White"
+                            FontFamily="Cascadia Mono Light" 
+                            Width="101"
+                            Cursor="" SelectionOpacity="-3" BorderBrush="#ACACAC"/>
+            <TextBox Style="{StaticResource TextBoxDef}" BorderThickness="2" Height="35" FontSize="13" FontWeight="Bold" FontFamily="Cascadia Mono Light" Canvas.Top="65" Width="101" BorderBrush="#FFDED9D9"/>
+        </Canvas>
+        <Canvas Margin="81,122,326,88">
+            <Label
+                            FontSize="13" 
+                            FontFamily="Candara" 
+                            Content="Отдаёте"
+                            Height="24"
+                            Width="200" Foreground="#FFDED9D9" HorizontalAlignment="Center" Canvas.Top="7" VerticalAlignment="Top"/>
 
-                <ComboBox  x:Name="myComboBox"                          
-                    Padding="0,0"
-                    MaxDropDownHeight = "200"
-                    HorizontalContentAlignment ="Center"
-                    VerticalContentAlignment="Center"   
-                    Foreground="White"
-                    Template="{DynamicResource ComboBoxTemplate1}" Height="35" Width="200"
-                    BorderBrush="{x:Null}" 
-                    Text="Валюта"
-                    BorderThickness="2"
-                    AutomationProperties.HelpText="Валюта"
-                    FontSize="13"
-                    FontFamily="Cascadia Mono Light"
-                    IsReadOnly="True" HorizontalAlignment="Center" Canvas.Top="31" VerticalAlignment="Top">
-                    <!--<ComboBox.Effect>
+            <ComboBox  x:Name="myComboBox"                          
+                            Padding="0,0"
+                            MaxDropDownHeight = "200"
+                            HorizontalContentAlignment ="Center"
+                            VerticalContentAlignment="Center"   
+                            Foreground="White"
+                            Template="{DynamicResource ComboBoxTemplate1}" Height="35" Width="200"
+                            BorderBrush="{x:Null}" 
+                            Text="Валюта"
+                            BorderThickness="1"
+                            AutomationProperties.HelpText="Валюта"
+                            FontSize="13"
+                            FontFamily="Cascadia Mono Light"
+                            IsReadOnly="True" HorizontalAlignment="Center" Canvas.Top="31" VerticalAlignment="Top">
+                <!--<ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>-->
-                    <!--<ComboBox.Resources>
+                <!--<ComboBox.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
                         </ComboBox.Resources>-->
 
 
-                    <ComboBox.ItemContainerStyle>
+                <ComboBox.ItemContainerStyle>
 
-                        <Style TargetType="{x:Type ComboBoxItem}">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="10"/>
-                            <!-- Устанавливает отступы внутри каждого элемента -->
-                            <Setter Property="FontSize" Value="15"/>
-                            <!-- Устанавливает размер шрифта -->
+                    <Style TargetType="{x:Type ComboBoxItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="10"/>
+                        <!-- Устанавливает отступы внутри каждого элемента -->
+                        <Setter Property="FontSize" Value="15"/>
+                        <!-- Устанавливает размер шрифта -->
 
 
 
-                            <Setter Property="Background" Value="#2F2F32"/>
-                            <Setter Property="Padding" Value="0,10"/>
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="BorderThickness" Value="12"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
+                        <Setter Property="Background" Value="#2F2F32"/>
+                        <Setter Property="Padding" Value="0,10"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderThickness" Value="12"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
 
-                                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
 
-                                        <Border x:Name="Bd"   BorderBrush="#262629"  BorderThickness="1" Padding="20,12,12,12" Background="#1E1E1E">
+                                    <Border x:Name="Bd"   BorderBrush="#262629"  BorderThickness="1" Padding="20,12,12,12" Background="#1E1E1E">
 
-                                            <ContentPresenter />
-                                        </Border>
-                                        <ControlTemplate.Triggers>
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
 
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="Bd" Property="Background" Value="#2C2C2E"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#2C2C2E"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
 
-                        <!--<Style TargetType="ComboBoxItem">
+                    <!--<Style TargetType="ComboBoxItem">
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Background" Value="#2F2F32"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             -->
-                        <!--<Style.Triggers>
+                    <!--<Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="{StaticResource GrayOt}"/>
                                     <Setter Property="FontWeight" Value="Bold" />
                                 </Trigger>
                             </Style.Triggers>-->
-                        <!--
+                    <!--
                         </Style>-->
-                    </ComboBox.ItemContainerStyle>
+                </ComboBox.ItemContainerStyle>
 
-                    <ComboBoxItem FontSize="13" Padding="12"  Content="RUB Российский рубль"/>
-                    <ComboBoxItem FontSize="13" Content="USD Долар США"/>
-                    <ComboBoxItem FontSize="13" Content="EUR Евро"/>
+                <ComboBoxItem FontSize="13" Padding="12"  Content="RUB Российский рубль"/>
+                <ComboBoxItem FontSize="13" Content="USD Долар США"/>
+                <ComboBoxItem FontSize="13" Content="EUR Евро"/>
 
-                </ComboBox>
+            </ComboBox>
 
-                <Label
-                    FontSize="13"
-                    FontFamily="Candara"
-                    Content="Получаете" 
-                    Height="24" Width="200" Foreground="#FFDED9D9" HorizontalAlignment="Center" Canvas.Top="72" VerticalAlignment="Top"/>
-                <ComboBox  x:Name="myComboBox1"                          
-                    Padding="0,10"
-                    MaxDropDownHeight = "200"
-                    HorizontalContentAlignment ="Center"
-                    VerticalContentAlignment="Center"   
-                    Foreground="White"
-                    Template="{DynamicResource ComboBoxTemplate1}" Height="35" Width="200"
-                    BorderBrush="{x:Null}" 
-                    Text="Валюта"
-                    BorderThickness="2"
-                    AutomationProperties.HelpText="Валюта"
-                    FontSize="13"
-                    FontFamily="Cascadia Mono Light"
-                    IsReadOnly="True" HorizontalAlignment="Center" Canvas.Top="96" VerticalAlignment="Top">
-                    <!--<ComboBox.Effect>
+            <Label
+                            FontSize="13"
+                            FontFamily="Candara"
+                            Content="Получаете" 
+                            Height="24" Width="200" Foreground="#FFDED9D9" HorizontalAlignment="Center" Canvas.Top="72" VerticalAlignment="Top"/>
+            <ComboBox  x:Name="myComboBox1"                          
+                            Padding="0,10"
+                            MaxDropDownHeight = "200"
+                            HorizontalContentAlignment ="Center"
+                            VerticalContentAlignment="Center"   
+                            Foreground="White"
+                            Template="{DynamicResource ComboBoxTemplate1}" Height="35" Width="200"
+                            BorderBrush="{x:Null}" 
+                            Text="Валюта"
+                            BorderThickness="1"
+                            AutomationProperties.HelpText="Валюта"
+                            FontSize="13"
+                            FontFamily="Cascadia Mono Light"
+                            IsReadOnly="True" HorizontalAlignment="Center" Canvas.Top="96" VerticalAlignment="Top">
+                <!--<ComboBox.Effect>
                         <DropShadowEffect/>
                     </ComboBox.Effect>-->
-                    <!--<ComboBox.Resources>
+                <!--<ComboBox.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
                         </ComboBox.Resources>-->
 
 
-                    <ComboBox.ItemContainerStyle>
+                <ComboBox.ItemContainerStyle>
 
-                        <!--<Style TargetType="ComboBoxItem">
+                    <!--<Style TargetType="ComboBoxItem">
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Background" Value="#2F2F32"/>
                             <Setter Property="BorderThickness" Value="0"/>
                             -->
-                        <!--<Style.Triggers>
+                    <!--<Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="{StaticResource GrayOt}"/>
                                     <Setter Property="FontWeight" Value="Bold" />
                                 </Trigger>
                             </Style.Triggers>-->
-                        <!--
+                    <!--
                         </Style>-->
 
-                        <Style TargetType="{x:Type ComboBoxItem}">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                            <Setter Property="VerticalContentAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="10"/>
-                            <!-- Устанавливает отступы внутри каждого элемента -->
-                            <Setter Property="FontSize" Value="15"/>
-                            <!-- Устанавливает размер шрифта -->
+                    <Style TargetType="{x:Type ComboBoxItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="10"/>
+                        <!-- Устанавливает отступы внутри каждого элемента -->
+                        <Setter Property="FontSize" Value="15"/>
+                        <!-- Устанавливает размер шрифта -->
 
 
 
-                            <Setter Property="Background" Value="#2F2F32"/>
-                            <Setter Property="Padding" Value="0,10"/>
-                            <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
-                            <Setter Property="BorderThickness" Value="12"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
+                        <Setter Property="Background" Value="#2F2F32"/>
+                        <Setter Property="Padding" Value="0,10"/>
+                        <!--<Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+                        <Setter Property="BorderThickness" Value="12"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
 
-                                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
 
-                                        <Border x:Name="Bd"   BorderBrush="#262629"  BorderThickness="1" Padding="20,12,12,12" Background="#1E1E1E">
+                                    <Border x:Name="Bd"   BorderBrush="#262629"  BorderThickness="1" Padding="20,12,12,12" Background="#1E1E1E">
 
-                                            <ContentPresenter />
-                                        </Border>
-                                        <ControlTemplate.Triggers>
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
 
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="Bd" Property="Background" Value="#2C2C2E"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#2C2C2E"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
 
-                    </ComboBox.ItemContainerStyle>
-                    <ComboBoxItem FontSize="13" Padding="12"  Content="RUB Российский рубль"/>
-                    <ComboBoxItem FontSize="13" Content="USD Долар США"/>
-                    <ComboBoxItem FontSize="13" Content="EUR Евро"/>
+                </ComboBox.ItemContainerStyle>
+                <ComboBoxItem FontSize="13" Padding="12"  Content="RUB Российский рубль"/>
+                <ComboBoxItem FontSize="13" Content="USD Долар США"/>
+                <ComboBoxItem FontSize="13" Content="EUR Евро"/>
 
-                </ComboBox>
-                <Button Template="{DynamicResource ButtonTemplate1}"   FontSize="13"  Foreground="White"
-             FontFamily="Cascadia Mono Light" BorderThickness="2"  Style="{StaticResource Button}" Height="35" Content="Обменять" Canvas.Left="-6" Canvas.Top="143" Width="148"/>
+            </ComboBox>
+            <Button Template="{DynamicResource ButtonTemplate1}"   FontSize="13"  Foreground="White"
+                      FontFamily="Cascadia Mono Light" BorderThickness="1"  Style="{StaticResource Button}" Height="35" Content="Обменять" Canvas.Left="-6" Canvas.Top="143" Width="148"/>
 
-            </Canvas>
-        </Grid>
-    </Border>
+        </Canvas>
+        <Label 
+            FontSize="26"
+            FontFamily="Cascadia Mono ExtraLight" Foreground="#FFDED9D9" Content="Обмен валют" Margin="81,74,269,280" />
+    </Grid>
 </Page>

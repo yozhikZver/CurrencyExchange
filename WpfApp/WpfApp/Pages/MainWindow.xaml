@@ -7,14 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         
-        MinHeight="550" 
-        
-        MinWidth="800" 
-         
-        
+        MinHeight="400"
+        MinWidth="400"
         Height="548" 
         Width="800" 
-        WindowStyle="None">
+        
+        WindowStyle="None" Loaded="Window1_Loaded">
     <Window.Resources>
         <ResourceDictionary Source="../Style/StyleColors.xaml"/>
 
@@ -33,6 +31,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel 
+            Height="34"
             Grid.Row="0" 
             Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="–"  Background="#383838" Foreground="{DynamicResource White}" IsCancel="True" BorderBrush="{x:Null}" Height="32" Width="35" FontFamily="Courier New" RenderTransformOrigin="0.487,-0.06" Click="ButtonExit_Click_Hide" FontWeight="Bold" FontStyle="Italic">
